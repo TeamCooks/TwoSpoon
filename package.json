@@ -1,7 +1,8 @@
 {
-  "name": "dx",
-  "version": "0.1.0",
+  "name": "twospoon",
+  "version": "0.0.1",
   "private": true,
+  "description": "hanspoon 개선을 위한 TwoSpoon 프로젝트 입니다.",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^12.1.3",
