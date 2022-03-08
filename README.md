@@ -1,4 +1,4 @@
-# 🥄 TwoSpoon
+# 🥄🥄 TwoSpoon
 
 hanspoon 페이지 개선을 목표로 하는 프로젝트입니다.
 
@@ -14,10 +14,13 @@ hanspoon 페이지 개선을 목표로 하는 프로젝트입니다.
 
 [TwoSpoon - Wiki](https://github.com/TeamCooks/TwoSpoon/wiki)에서 확인할 수 있습니다.
 
+## 📌 팀 컨벤션
+
+[TwoSpoon - Convention](https://github.com/TeamCooks/TwoSpoon/wiki/%ED%8C%80-%EC%BB%A8%EB%B2%A4%EC%85%98)
+
 ## 🤼‍♀️ 팀 구성
 
-|                    이정민                    |                  이정훈                  |                    이한결                    |                이효원                |
-| :------------------------------------------: | :--------------------------------------: | :------------------------------------------: | :----------------------------------: |
-| [@hustle-dev](https://github.com/hustle-dev) | [@jhyj0521](https://github.com/jhyj0521) | [@hanana1253](https://github.com/hanana1253) | [@hhhyyo](https://github.com/hhhyyo) |
-
+|                                  이정민                                  |                                 이정훈                                 |                                  이한결                                  |                                이효원                                |
+| :----------------------------------------------------------------------: | :--------------------------------------------------------------------: | :----------------------------------------------------------------------: | :------------------------------------------------------------------: |
+|               [@hustle-dev](https://github.com/hustle-dev)               |                [@jhyj0521](https://github.com/jhyj0521)                |               [@hanana1253](https://github.com/hanana1253)               |                 [@hhhyyo](https://github.com/hhhyyo)                 |
 | <img src="https://avatars.githubusercontent.com/hustle-dev" width="100"> | <img src="https://avatars.githubusercontent.com/jhyj0521" width="100"> | <img src="https://avatars.githubusercontent.com/hanana1253" width="100"> | <img src="https://avatars.githubusercontent.com/hhhyyo" width="100"> |
