@@ -2,19 +2,19 @@
 
 What kind of change does this PR introduce?
 
-<!-- 'x'를 이용하여 이 PR에 적용되는 항목을 확인해주세요. -->
+<!-- 'x'를 이용하여 이 PR에 적용되는 항목을 확인해 주세요. -->
 
-- [ ] Bugfix
-- [ ] Feature
-- [ ] Code style update (formatting, local variables)
-- [ ] Refactoring (no functional changes, no api changes)
-- [ ] Configuration related changes
-- [ ] Documentation content changes
-- [ ] Other... Please describe:
+- [ ] 버그를 수정했어요.
+- [ ] 새로운 기능을 추가했어요.
+- [ ] 코드 스타일 업데이트를 했어요(포맷팅, 지역변수)
+- [ ] 리팩토링을 했어요 (기능적인 변화 없이, api 변경 없이)
+- [ ] 환경설정을 변경했어요.
+- [ ] 문서 내용을 변경했어요.
+- [ ] 기타 사항을 설명해 주세요.
 
 ## Related Issues
 
-<!--#을 눌러 이슈와 연결해주세요-->
+<!--#을 눌러 이슈와 연결해 주세요-->
 
 ## What does this PR do?
 
