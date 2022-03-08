@@ -1,0 +1,255 @@
+import { Meta } from '@storybook/addon-docs';
+import Code from './assets/code-brackets.svg';
+import Colors from './assets/colors.svg';
+import Comments from './assets/comments.svg';
+import Direction from './assets/direction.svg';
+import Flow from './assets/flow.svg';
+import Plugin from './assets/plugin.svg';
+import Repo from './assets/repo.svg';
+import StackAlt from './assets/stackalt.svg';
+
+<Meta title="Example/Introduction" />
+
+<style>{
+  /* css */ `
+  .container {
+    max-width: 960px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .container p {
+    font-size: 1rem;
+    line-height: 1.75;
+  }
+  .subheading {
+    --mediumdark: '#999999';
+    font-weight: 900;
+    font-size: 19px;
+    color: #999;
+    line-height: 24px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    margin-top: 40px;
+  }
+
+  .link-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    row-gap: 10px;
+  }
+
+  @media (min-width: 620px) {
+    .link-list {
+      row-gap: 20px;
+      column-gap: 20px;
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media all and (-ms-high-contrast:none) {
+  .link-list {
+      display: -ms-grid;
+      -ms-grid-columns: 1fr 1fr;
+      -ms-grid-rows: 1fr 1fr;
+    }
+  }
+
+  .link-item {
+    display: block;
+    padding: 20px 30px 20px 15px;
+    border: 1px solid #00000010;
+    border-radius: 5px;
+    transition: background 150ms ease-out, border 150ms ease-out, transform 150ms ease-out;
+    color: #333333;
+    display: flex;
+    align-items: flex-start;
+  }
+
+  .link-item:hover {
+    border-color: #1EA7FD50;
+    transform: translate3d(0, -3px, 0);
+    box-shadow: rgba(0, 0, 0, 0.08) 0 3px 10px 0;
+  }
+
+  .link-item:active {
+    border-color: #1EA7FD;
+    transform: translate3d(0, 0, 0);
+  }
+
+  .link-item strong {
+    font-weight: 700;
+    display: block;
+    margin-bottom: 2px;
+  }
+  
+  .link-item img {
+    height: 40px;
+    width: 40px;
+    margin-right: 15px;
+    flex: none;
+  }
+
+  .link-item span {
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .tip {
+    display: inline-block;
+    border-radius: 1em;
+    font-size: 11px;
+    line-height: 12px;
+    font-weight: 700;
+    background: #E7FDD8;
+    color: #66BF3C;
+    padding: 4px 12px;
+    margin-right: 10px;
+    vertical-align: top;
+  }
+
+  .tip-wrapper {
+    font-size: 14px;
+    line-height: 20px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
+
+  .tip-wrapper code {
+    display: inline-block;
+    white-space: normal;
+    word-break: break-all;
+    margin: 0.3em 0;
+    font-size: 12px;
+  }
+
+  @media (min-width: 620px) {
+    .tip-wrapper code {
+      display: inline-block;
+      word-break: initial;
+      margin: 0;
+    }
+  }
+`
+}</style>
+
+
+<div className="container"> 
+  <h1>Storybook 월드에 온 것을 환영합니다.</h1>
+  <p>
+    Storybook은 앱의 비즈니스 로직, 데이터 및 컨텍스트와 격리된 UI 컴포넌트를
+    구축하는 데 도움을 제공합니다. 규모가 큰 앱의 경우, 앱 단위로 개발하는 것은
+    쉽지 않습니다. 하지만 Storybook을 사용하면 컴포넌트 단위로 독립적 개발이
+    가능해 제작이 수월해집니다. UI를 구성하는 컴포넌트의 개별 상태는{' '}
+    <strong>스토리(story)</strong>에서 개발, 테스트 됩니다.
+  </p>
+  <p>
+    왼쪽 사이드바에서 각 컴포넌트 제작 사례를 살펴보세요. Storybook의 작동 방식을 알아보려면{' '}
+    <code>src/stories/example</code> 디렉토리에서 코드를 확인하세요. 원자(atomic) 컴포넌트부터
+    시작해 페이지 컴포넌트로 끝나는 <a
+      href="https://componentdriven.org"
+      rel="noopener noreferrer"
+      target="_blank"
+    >
+      컴포넌트 주도 개발
+    </a> 프로세스로 UI를 구축하는 것을 권장합니다.
+  </p>
+  <div className="subheading">구성</div>
+  <div className="link-list">
+    <a
+      className="link-item"
+      href="https://storybook.js.org/docs/react/addons/addon-types"
+      target="_blank"
+    >
+      <img src={Plugin} alt="플러그인" />
+      <span>
+        <strong>유용한 도구 프리셋</strong>
+        TypeScript, SCSS 등을 위한 손쉬운 설정
+      </span>
+    </a>
+    <a
+      className="link-item"
+      href="https://storybook.js.org/docs/react/configure/webpack"
+      target="_blank"
+    >
+      <img src={StackAlt} alt="빌드" />
+      <span>
+        <strong>빌드 구성</strong>
+        Webpack 번들러에 Babel 로더를 커스터마이징 하는 방법
+      </span>
+    </a>
+    <a
+      className="link-item"
+      href="https://storybook.js.org/docs/react/configure/styling-and-css"
+      target="_blank"
+    >
+      <img src={Colors} alt="컬러" />
+      <span>
+        <strong>스타일링</strong>
+        CSS 라이브러리를 로드하고 구성하는 방법
+      </span>
+    </a>
+    <a
+      className="link-item"
+      href="https://storybook.js.org/docs/react/get-started/setup#configure-storybook-for-your-stack"
+      target="_blank"
+    >
+      <img src={Flow} alt="플로우" />
+      <span>
+        <strong>데이터</strong>
+        데이터 라이브러리 모의 프로바이더(Providers) 설정 방법
+      </span>
+    </a>
+  </div>
+  <div className="subheading">학습</div>
+  <div className="link-list">
+    <a
+      className="link-item"
+      href="https://storybook.js.org/docs"
+      target="_blank"
+    >
+      <img src={Repo} alt="저장소" />
+      <span>
+        <strong>Storybook 문서</strong>
+        구성, 커스터마이징, 확장
+      </span>
+    </a>
+    <a
+      className="link-item"
+      href="https://storybook.js.org/tutorials/"
+      target="_blank"
+    >
+      <img src={Direction} alt="디렉션" />
+      <span>
+        <strong>심층 가이드</strong>
+        리딩 팀의 우수 사례
+      </span>
+    </a>
+    <a
+      className="link-item"
+      href="https://github.com/storybookjs/storybook"
+      target="_blank"
+    >
+      <img src={Code} alt="코드" />
+      <span>
+        <strong>GitHub 프로젝트</strong>
+        소스 보기 / 이슈 추가
+      </span>
+    </a>
+    <a
+      className="link-item"
+      href="https://discord.gg/storybook"
+      target="_blank"
+    >
+      <img src={Comments} alt="코멘트" />
+      <span>
+        <strong>디스코드 채팅</strong>
+        관리자 / 커뮤니티 채팅
+      </span>
+    </a>
+  </div>
+  <div className="tip-wrapper">
+    <span className="tip">팁(Tip)</span>
+    <code>src/stories/example/introduction.stories.mdx</code> 마크다운 문서를 수정하면 변경됩니다.
+  </div>
+</div>
