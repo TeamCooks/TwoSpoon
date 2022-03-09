@@ -1,7 +1,7 @@
 ---
 name: Feature Template
 about: Suggest an idea for this project
-title: '[FEAT]'
+title: ''
 labels: ''
 assignees: ''
 ---
