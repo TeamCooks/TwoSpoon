@@ -1,10 +1,11 @@
 import styled from 'styled-components';
+import { pxToRem } from 'utils';
 
 export const StyledLabel = styled.p`
   color: #cbcbcb;
-  font-size: rem(24px);
+  font-size: ${pxToRem(24)};
   display: block;
-  padding: rem(10px) 0;
+  padding: ${pxToRem(10)} 0;
 `;
 
 export const StyledStrong = styled.strong`
