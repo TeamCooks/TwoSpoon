@@ -7,7 +7,7 @@ import MyRecipes from 'pages/MyRecipes/MyRecipes';
 import Modal from 'pages/Modal/Modal';
 import PageNotFound from 'pages/PageNotFound/PageNotFound';
 
-function App() {
+export const App = () => {
   const location = useLocation();
   const state = location.state as { backgroundLocation?: Location };
   const backgroundLocation = state?.backgroundLocation;
@@ -31,6 +31,4 @@ function App() {
       )}
     </>
   );
-}
-
-export default App;
+};
