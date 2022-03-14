@@ -7,7 +7,7 @@ export const StyledDL = styled.dl`
   color: #cbcbcb;
   font-size: ${pxToRem(24)};
   padding: ${pxToRem(10)} 0;
-  max-width: ${pxToRem(400)};
+  width: 100%;
 `;
 
 export const StyledDiv = styled.div`
