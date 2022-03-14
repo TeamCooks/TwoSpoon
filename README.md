@@ -1,6 +1,8 @@
 # ✌🏻 TwoSpoon
 
-hanspoon 페이지 개선을 목표로 하는 프로젝트입니다.
+[hanspoon](https://github.com/TeamCooks/hanspoon) 프로젝트의 페이지 개선을 목표로 하는 프로젝트입니다.
+
+원본 페이지: https://spoonacular.com/
 
 ## 🛠 사용기술
 
