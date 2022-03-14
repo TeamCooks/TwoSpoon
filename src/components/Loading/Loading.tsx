@@ -6,7 +6,7 @@ import { LoadingProps } from './Loading.types';
 const loadingStartNode = $<HTMLDivElement>('loading-start');
 const loadingEndNode = $<HTMLDivElement>('loading-end');
 
-export const Loading = ({ message }: LoadingProps) => {
+export const Loading = ({ message, showBackground }: LoadingProps) => {
   useEffect(() => {
     loadingStartNode.setAttribute('role', 'alert');
     loadingStartNode.insertAdjacentHTML('beforeend', `<span class="a11yHidden">${message}</span>`);
@@ -22,5 +22,24 @@ export const Loading = ({ message }: LoadingProps) => {
     };
   }, [message]);
 
-  return <StyledLoadingThreeDots fill="#e56a18" height="1em" />;
+  return (
+    <>
+      {showBackground ? (
+        <div
+          style={{
+            zIndex: '300',
+            position: 'fixed',
+            top: '0',
+            left: '0',
+            width: '100%',
+            height: '100%',
+            background: 'rgba(36, 36, 36, 0.8)',
+            backdropFilter: 'blur(3px)',
+            minHeight: '100%',
+          }}
+        />
+      ) : null}
+      <StyledLoadingThreeDots fill="#e56a18" height="1em" />;
+    </>
+  );
 };
