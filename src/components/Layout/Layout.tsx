@@ -6,6 +6,8 @@ export const Layout = ({ children }: LayoutProps): JSX.Element => {
     <>
       <Header />
       <main>{children}</main>
+      <div id="loading-start" aria-live="assertive" />
+      <div id="loading-end" aria-live="assertive" />
     </>
   );
 };
