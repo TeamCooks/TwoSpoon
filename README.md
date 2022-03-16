@@ -3,10 +3,11 @@
 [hanspoon](https://github.com/TeamCooks/hanspoon) 프로젝트의 페이지 개선을 목표로 하는 프로젝트입니다.
 
 원본 페이지: https://spoonacular.com/
+hanspoon 페이지: https://hanspoon-31cd9.web.app/
 
 ## 🛠 사용기술
 
-<img src="https://img.shields.io/badge/React-20232a?style=for-the-badge&logo=React&logoColor=#5bccea"/> <img src="https://img.shields.io/badge/Typescript-3178C6?style=for-the-badge&logo=Typescript&logoColor=white"/> <img src="https://img.shields.io/badge/styled--components-DB7093?style=for-the-badge&logo=styled-components&logoColor=white"/> <img src="https://img.shields.io/badge/redux-%23593d88.svg?style=for-the-badge&logo=redux&logoColor=white"> <img src="https://img.shields.io/badge/firebase-%23039BE5.svg?style=for-the-badge&logo=firebase"> <img src="https://img.shields.io/badge/-Storybook-FF4785?style=for-the-badge&logo=storybook&logoColor=white">
+<img src="https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white"> <img src="https://img.shields.io/badge/Typescript-3178C6?style=for-the-badge&logo=Typescript&logoColor=white"/> <img src="https://img.shields.io/badge/Emotion-D36AC2?style=for-the-badge&logoColor=f776AB"/> <img src="https://img.shields.io/badge/redux-%23593d88.svg?style=for-the-badge&logo=redux&logoColor=white"> <img src="https://img.shields.io/badge/firebase-%23039BE5.svg?style=for-the-badge&logo=firebase"> <img src="https://img.shields.io/badge/-Storybook-FF4785?style=for-the-badge&logo=storybook&logoColor=white">
 
 ## 📅 기간
 
