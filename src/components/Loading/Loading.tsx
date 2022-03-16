@@ -3,8 +3,8 @@ import { $ } from 'utils';
 import { StyledLoadingThreeDots } from './Loading.styled';
 import { LoadingProps } from './Loading.types';
 
-const loadingStartNode = $<HTMLDivElement>('loading-start');
-const loadingEndNode = $<HTMLDivElement>('loading-end');
+const loadingStartNode = $('#loading-start');
+const loadingEndNode = $<HTMLDivElement>('#loading-end');
 
 export const Loading = ({ message, showBackground }: LoadingProps) => {
   useEffect(() => {
@@ -39,7 +39,7 @@ export const Loading = ({ message, showBackground }: LoadingProps) => {
           }}
         />
       ) : null}
-      <StyledLoadingThreeDots fill="#e56a18" height="1em" />;
+      <StyledLoadingThreeDots fill="#e56a18" height="1em" />
     </>
   );
 };

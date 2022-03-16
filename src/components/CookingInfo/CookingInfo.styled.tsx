@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import { BsBookmarkHeartFill } from 'react-icons/bs';
 import { RiTimerFill } from 'react-icons/ri';
 import { pxToRem } from 'utils';
