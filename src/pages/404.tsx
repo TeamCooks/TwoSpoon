@@ -1,4 +1,4 @@
-import EmptyPage from 'components/EmptyPage/EmptyPage';
+import { EmptyPage } from 'components';
 import Link from 'next/link';
 import { NextPage } from 'next';
 
