@@ -1,6 +1,5 @@
 import ko from 'axe-core/locales/ko.json';
 import React from 'react';
-import { MemoryRouter } from 'react-router-dom';
 import { GlobalStyle } from 'styles/GlobalStyle';
 import { ThemeProvider } from 'styled-components';
 import { defaultTheme } from 'theme/theme';
@@ -8,10 +7,8 @@ import { defaultTheme } from 'theme/theme';
 export const decorators = [
   (Story) => (
     <ThemeProvider theme={defaultTheme}>
-      <MemoryRouter>
-        <GlobalStyle />
-        <Story />
-      </MemoryRouter>
+      <GlobalStyle />
+      <Story />
     </ThemeProvider>
   ),
 ];
