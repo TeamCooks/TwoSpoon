@@ -1,3 +1,3 @@
 export interface EmptyPageProps {
-  children: JSX.Element | JSX.Element[];
+  children: React.ReactNode;
 }
