@@ -36,5 +36,10 @@ declare module 'styled-components' {
       xl: string;
       xxl: string;
     };
+
+    break: {
+      mobile: string;
+      desktop: string;
+    };
   }
 }

@@ -1,5 +1,10 @@
 import { HeadingProps } from './Heading.types';
+import { StyledHeading } from './Heading.styled';
 
-export const Heading = ({ as: Component, className, children }: HeadingProps): JSX.Element => {
-  return <Component className={className}>{children}</Component>;
+export const Heading = ({ as, className, children }: HeadingProps): JSX.Element => {
+  return (
+    <StyledHeading as={as} className={className}>
+      {children}
+    </StyledHeading>
+  );
 };
