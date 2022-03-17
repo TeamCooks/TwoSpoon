@@ -1,7 +1,7 @@
 type Type = 'button' | 'submit';
 type Variant = 'transparent' | 'outlined' | 'filled';
-type Color = 'primaryGreen' | 'primaryOrange' | 'white';
-type Icon = 'search' | 'user' | 'heart' | 'close' | 'cart' | 'link' | 'bookmark' | 'bookmarkFill' | 'up';
+type Color = 'primaryGreen' | 'primaryOrange' | 'white' | 'black';
+type IconType = 'search' | 'user' | 'heart' | 'close' | 'cart' | 'link' | 'bookmark' | 'bookmarkFill' | 'up';
 type Size = 'small' | 'large';
 
 export interface StyledButtonProps {
@@ -17,12 +17,15 @@ export interface ButtonProps extends StyledButtonProps {
   children: React.ReactNode;
 }
 
-export interface IconButtonProps {
+export interface StyledIconButtonProps {
   type: Type;
   ariaLabel: string;
-  icon: Icon;
   circle: boolean;
-  variant: Variant;
   color: Color;
   size: Size;
+}
+
+export interface IconButtonProps extends StyledIconButtonProps {
+  iconType: IconType;
+  variant: Variant;
 }
