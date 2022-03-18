@@ -6,7 +6,9 @@ const NotFound: NextPage = () => {
   return (
     <EmptyPage>
       <h2>Page Not Found</h2>
-      <Link href="/">Go to main page?</Link>
+      <Link href="/">
+        <a>Go to main page?</a>
+      </Link>
     </EmptyPage>
   );
 };
