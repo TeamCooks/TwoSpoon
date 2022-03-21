@@ -46,19 +46,19 @@ const renderButton = ({
   switch (variant) {
     case 'transparent':
       return (
-        <StyledButton {...props} {...restProps}>
+        <StyledButton aria-label={ariaLabel} {...props} {...restProps}>
           {renderIcon(iconType)}
         </StyledButton>
       );
     case 'outlined':
       return (
-        <StyledOutlineButton {...props} {...restProps}>
+        <StyledOutlineButton aria-label={ariaLabel} {...props} {...restProps}>
           {renderIcon(iconType)}
         </StyledOutlineButton>
       );
     case 'filled':
       return (
-        <StyledFillButton {...props} {...restProps}>
+        <StyledFillButton aria-label={ariaLabel} {...props} {...restProps}>
           {renderIcon(iconType)}
         </StyledFillButton>
       );
