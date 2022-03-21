@@ -1,12 +1,12 @@
 import ko from 'axe-core/locales/ko.json';
 import React from 'react';
 import { GlobalStyle } from 'styles/GlobalStyle';
-import { ThemeProvider } from 'styled-components';
-import { defaultTheme } from 'theme/theme';
+import { ThemeProvider } from '@emotion/react';
+import { theme } from 'theme/theme';
 
 export const decorators = [
   (Story) => (
-    <ThemeProvider theme={defaultTheme}>
+    <ThemeProvider theme={theme}>
       <GlobalStyle />
       <Story />
     </ThemeProvider>
