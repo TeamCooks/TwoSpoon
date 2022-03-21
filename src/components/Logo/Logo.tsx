@@ -1,12 +1,15 @@
-import { StyledLink, StyledIcon, StyledSpan } from './Logo.styled';
+import Link from 'next/link';
+import { StyledA, StyledIcon, StyledSpan } from './Logo.styled';
 
 export const Logo = () => {
   return (
     <h1>
-      <StyledLink to="/">
-        <StyledIcon />
-        <StyledSpan>TwoSpoon</StyledSpan>
-      </StyledLink>
+      <Link href="/">
+        <StyledA>
+          <StyledIcon />
+          <StyledSpan>TwoSpoon</StyledSpan>
+        </StyledA>
+      </Link>
     </h1>
   );
 };

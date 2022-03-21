@@ -1,9 +1,8 @@
-import styled from 'styled-components';
-import { Link } from 'react-router-dom';
-import { ReactComponent as LogoIcon } from 'assets/logo.svg';
+import styled from '@emotion/styled';
 import { pxToRem, media } from 'utils';
+import { LogoIcon } from './LogoIcon';
 
-export const StyledLink = styled(Link)`
+export const StyledA = styled.a`
   display: flex;
   font-size: ${pxToRem(24)};
   align-items: center;
