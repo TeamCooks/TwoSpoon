@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import { StyledButtonProps } from './Button.types';
 
 export const StyledButton = styled.button<StyledButtonProps>`
@@ -16,4 +16,4 @@ export const StyledOutlineButton = styled(StyledButton)`
 export const StyledFillButton = styled(StyledButton)`
   background-color: ${({ color, theme }) => theme.color[color]};
   color: ${({ theme }) => theme.color.white};
-`
+`;
