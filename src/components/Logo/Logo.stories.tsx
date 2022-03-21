@@ -8,4 +8,4 @@ export default {
 
 const Template: ComponentStory<typeof Logo> = () => <Logo />;
 
-export const DefaultLogo = Template.bind({});
+export const Default = Template.bind({});
