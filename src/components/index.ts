@@ -3,4 +3,5 @@ export * from './Logo/Logo';
 export * from './Loading/Loading';
 export * from './Layout/Layout';
 export * from './Header/Header';
-export * from './EmptyPage/EmptyPage'
+export * from './EmptyPage/EmptyPage';
+export * from './SkeletonCard/SkeletonCard';
