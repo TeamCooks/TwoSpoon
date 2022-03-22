@@ -4,13 +4,16 @@ import { theme } from 'theme/theme';
 import { GlobalStyle } from 'styles/GlobalStyle';
 import { Provider } from 'react-redux';
 import { store } from 'store';
+import { Layout } from '../components';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ThemeProvider theme={theme}>
       <Provider store={store}>
         <GlobalStyle />
-        <Component {...pageProps} />
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
       </Provider>
     </ThemeProvider>
   );
