@@ -2,19 +2,18 @@ import type { AppProps } from 'next/app';
 import { ThemeProvider } from '@emotion/react';
 import { theme } from 'theme/theme';
 import { GlobalStyle } from 'styles/GlobalStyle';
-import { Provider } from 'react-redux';
-import { store } from 'store';
 import { Layout } from '../components';
+import { StoreProvider } from 'store';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ThemeProvider theme={theme}>
-      <Provider store={store}>
+      <StoreProvider>
         <GlobalStyle />
         <Layout>
           <Component {...pageProps} />
         </Layout>
-      </Provider>
+      </StoreProvider>
     </ThemeProvider>
   );
 }
