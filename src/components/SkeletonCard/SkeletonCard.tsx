@@ -7,7 +7,7 @@ import {
 } from './SkeletonCard.styled';
 import { SkeletonCardProps } from './SkeletonCard.types';
 
-export const SkeletonCard = ({ type, background, hasSummary, headingPosition }: SkeletonCardProps) => {
+export const SkeletonCard = ({ type, background, hasSummary, headingPosition }: SkeletonCardProps): JSX.Element => {
   return (
     <SkeletonContainer $type={type}>
       <SkeletonCardWrapper $type={type} $background={background}>
