@@ -1,7 +1,4 @@
-import { ThemeProvider } from '@emotion/react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { GlobalStyle } from 'styles/GlobalStyle';
-import { theme } from 'theme/theme';
 import { Pagination } from './Pagination';
 
 export default {
@@ -13,14 +10,6 @@ export default {
     totalResults: 100,
     limit: 5,
   },
-  decorators: [
-    (Story) => (
-      <ThemeProvider theme={theme}>
-        <GlobalStyle />
-        <Story />
-      </ThemeProvider>
-    ),
-  ],
 } as ComponentMeta<typeof Pagination>;
 
 const Template: ComponentStory<typeof Pagination> = (args) => <Pagination {...args} />;
