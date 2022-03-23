@@ -75,23 +75,23 @@ const topLeft = css`
 `;
 
 export const SkeletonContainer = styled.div<SkeletonTypeProps>`
-  ${(props) => props.type === 'square' && inlineBlock}
+  ${(props) => props.$type === 'square' && inlineBlock}
 `;
 
 export const SkeletonCardWrapper = styled.div<SkeletonWrapperProps>`
-  ${(props) => props.type === 'square' && inlineBlock};
+  ${(props) => props.$type === 'square' && inlineBlock};
 
   display: flex;
   flex-direction: column;
   padding: ${pxToRem(16)};
   position: relative;
 
-  background: ${(props) => (props.background === 'white' ? 'white' : 'none')};
-  box-shadow: ${(props) => props.background === 'white' && '0px 4px 4px rgba(0, 0, 0, 0.25);'};
+  background: ${(props) => (props.$background === 'white' ? 'white' : 'none')};
+  box-shadow: ${(props) => props.$background === 'white' && '0px 4px 4px rgba(0, 0, 0, 0.25);'};
 `;
 
 export const SkeletonImage = styled.div<SkeletonTypeProps>`
-  ${(props) => (props.type === 'square' ? squareType : wideType)}
+  ${(props) => (props.$type === 'square' ? squareType : wideType)}
 
   overflow: hidden;
   position: relative;
@@ -102,9 +102,9 @@ export const SkeletonImage = styled.div<SkeletonTypeProps>`
 
 export const SkeletonTitle = styled.div<SkeletonTitleProps>`
   ${(props) =>
-    props.headingPosition === 'topLeft'
+    props.$headingPosition === 'topLeft'
       ? topLeft
-      : props.headingPosition === 'bottomCenter'
+      : props.$headingPosition === 'bottomCenter'
       ? bottomCenter
       : bottomLeft}
 
@@ -122,5 +122,5 @@ export const SkeletonTitle = styled.div<SkeletonTitleProps>`
 `;
 
 export const SkeletonSummary = styled.div<SkeletonSummaryProps>`
-  ${(props) => (props.hasSummary ? hasSummaryTrue : hasSummaryFalse)}
+  ${(props) => (props.$hasSummary ? hasSummaryTrue : hasSummaryFalse)}
 `;

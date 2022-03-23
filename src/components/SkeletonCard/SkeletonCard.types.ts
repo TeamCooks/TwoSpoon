@@ -10,18 +10,18 @@ export interface SkeletonCardProps {
 }
 
 export interface SkeletonTypeProps {
-  type: SkeletonType;
+  $type: SkeletonType;
 }
 
 export interface SkeletonWrapperProps {
-  type: SkeletonType;
-  background: SkeletonBackground;
+  $type: SkeletonType;
+  $background: SkeletonBackground;
 }
 
 export interface SkeletonTitleProps {
-  headingPosition: SkeletonHeadingPosition;
+  $headingPosition: SkeletonHeadingPosition;
 }
 
 export interface SkeletonSummaryProps {
-  hasSummary: boolean;
+  $hasSummary: boolean;
 }
