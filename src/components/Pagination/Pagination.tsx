@@ -1,11 +1,10 @@
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
-import { PaginationProps } from './Pagination.styled';
-import { StyledPageButton, StyledPaginationControl } from './Pagination.types';
+import { usePageNum } from 'hooks/usePageNum';
+import { PaginationProps } from './Pagination.types';
+import { StyledPageButton, StyledPaginationControl } from './Pagination.styled';
 
 export const Pagination = ({ limit, currentPage, onClick: handleClick, totalResults }: PaginationProps) => {
-  const lastPageNum = Math.ceil(totalResults / limit);
-  const pageStartNum = Math.max(currentPage - 2, 1);
-  const pageEndNum = Math.min(currentPage + 2, lastPageNum);
+  const { pageStartNum, pageEndNum } = usePageNum({ currentPage, totalResults, limit });
   return (
     <StyledPaginationControl>
       <StyledPageButton
