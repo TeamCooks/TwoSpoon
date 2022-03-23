@@ -1,17 +1,10 @@
-import { useMemo } from 'react';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
+import { usePageNum } from 'hooks/usePageNum';
 import { PaginationProps } from './Pagination.types';
 import { StyledPageButton, StyledPaginationControl } from './Pagination.styled';
 
 export const Pagination = ({ limit, currentPage, onClick: handleClick, totalResults }: PaginationProps) => {
-
-  const { pageStartNum, pageEndNum } = useMemo(() => {
-    const lastPageNum = Math.ceil(totalResults / limit);
-    const pageStartNum = Math.max(currentPage - 2, 1);
-    const pageEndNum = Math.min(currentPage + 2, lastPageNum);
-    return { pageStartNum, pageEndNum };
-  }, [currentPage, totalResults, limit]);
-
+  const { pageStartNum, pageEndNum } = usePageNum({ currentPage, totalResults, limit });
   return (
     <StyledPaginationControl>
       <StyledPageButton
