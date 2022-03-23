@@ -1,8 +1,5 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import Link from 'next/link';
-import { ThemeProvider } from '@emotion/react';
-import { theme } from 'theme/theme';
-import { GlobalStyle } from 'styles/GlobalStyle';
 import { EmptyPage } from './EmptyPage';
 
 export default {
@@ -16,14 +13,6 @@ export default {
       </>
     ),
   },
-  decorators: [
-    (Story) => (
-      <ThemeProvider theme={theme}>
-        <GlobalStyle />
-        <Story />
-      </ThemeProvider>
-    ),
-  ],
 } as ComponentMeta<typeof EmptyPage>;
 
 const Template: ComponentStory<typeof EmptyPage> = (args) => <EmptyPage {...args} />;
