@@ -30,8 +30,7 @@ export const signIn = async ({ email, password }: SignInFormValues) => {
     const { user } = await signInWithEmailAndPassword(auth, email, password);
     return user;
   } catch (error) {
-    const errorCode = error.code;
-    throw new Error(errorCode);
+    throw new Error(error.code);
   }
 };
 
@@ -45,8 +44,7 @@ export const signUp = async ({ username, email, password }: SignUpFormValues) =>
     });
     return user;
   } catch (error) {
-    const errorCode = error.code;
-    throw new Error(errorCode);
+    throw new Error(error.code);
   }
 };
 
