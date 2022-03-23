@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { pxToRem } from '../../utils';
+import { pxToRem } from 'utils';
 
 export const StyledPaginationControl = styled.div`
   display: flex;
