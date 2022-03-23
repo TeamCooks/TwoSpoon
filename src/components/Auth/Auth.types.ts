@@ -17,3 +17,7 @@ export interface FormProps {
   initialUsername?: string;
   currentForm: 'signin' | 'signup';
 }
+
+export interface StyleInputProps {
+  $warning: boolean;
+}
