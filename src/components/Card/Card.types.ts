@@ -12,3 +12,8 @@ export interface CardProps {
   title: string;
   summary: string;
 }
+
+export interface CardContainerProps {
+  $type: CardType;
+  $background: CardBackgroundType;
+}
