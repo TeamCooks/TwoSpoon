@@ -1,3 +1,4 @@
+import { signIn, signUp } from 'api/requestAuth';
 import * as Yup from 'yup';
 
 export const TOGGLE_MESSAGE = {
@@ -63,12 +64,6 @@ export const FIELDS = {
 };
 
 export const AUTH_FUNC = {
-  signin: (values) => {
-    console.log(values);
-    console.log('signin');
-  },
-  signup: (values) => {
-    console.log(values);
-    console.log('signupppp');
-  },
+  signin: signIn,
+  signup: signUp,
 };
