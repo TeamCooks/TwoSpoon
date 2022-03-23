@@ -4,26 +4,26 @@ import * as Yup from 'yup';
 export const TOGGLE_MESSAGE = {
   signin: 'Not registered yet? Sign up here!',
   signup: 'Already a member? Sign in here!',
-};
+} as const;
 
 export const HEADING = {
   signin: 'Sign In',
   signup: 'Sign Up',
-};
+} as const;
 
 export const PLACEHOLDER = {
   username: 'Username',
   email: 'Email',
   password: 'Password',
   passwordConfirm: 'Confirm password',
-};
+} as const;
 
 export const TYPE = {
   username: 'text',
   email: 'email',
   password: 'password',
   passwordConfirm: 'password',
-};
+} as const;
 
 export const INITIAL_VALUES = {
   signin: {
@@ -36,7 +36,7 @@ export const INITIAL_VALUES = {
     passwordConfirm: '',
     email: '',
   },
-};
+} as const;
 
 export const SCHEMA = {
   signin: Yup.object({
@@ -51,19 +51,19 @@ export const SCHEMA = {
       .required('Required'),
     email: Yup.string().email('Invalid email address').required('Required'),
   }),
-};
+} as const;
 
 export const AUTH_ERROR_MSG = {
   signin: 'Sign in failed. Please try again.',
   signup: 'Sign up failed. Please try again.',
-};
+} as const;
 
 export const FIELDS = {
   signin: ['email', 'password'],
   signup: ['username', 'email', 'password', 'passwordConfirm'],
-};
+} as const;
 
 export const AUTH_FUNC = {
   signin: signIn,
   signup: signUp,
-};
+} as const;

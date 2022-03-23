@@ -7,14 +7,14 @@ const AuthForm = (props: FormProps & FormikProps<FormValues>): JSX.Element => {
   const { currentForm, values, errors, dirty, touched, isValid, handleChange, handleBlur, handleSubmit } = props;
   return (
     <form onSubmit={handleSubmit}>
-      {FIELDS[currentForm].map((field) => (
+      {FIELDS[currentForm].map((field): JSX.Element => (
         <>
           <label className="a11yHidden" htmlFor={field}>
             {field.toUpperCase()}
           </label>
           <StyledInput
             id={field}
-            warning={touched[field] && errors[field]}
+            $warning={touched[field] && errors[field]}
             name={field}
             placeholder={PLACEHOLDER[field]}
             type={TYPE[field]}
