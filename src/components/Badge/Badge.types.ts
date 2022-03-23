@@ -37,6 +37,7 @@ export interface BadgeProps {
 
 export interface StyledBadgeProps {
   $color: Color;
+  $size: Size;
 }
 
 export type BadgeInfos = {
