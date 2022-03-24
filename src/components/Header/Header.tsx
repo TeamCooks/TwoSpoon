@@ -6,9 +6,6 @@ import { createPortal } from 'react-dom';
 import { StyledHeader, StyledDiv, StyledIconButton } from './Header.styled';
 
 export const Header = (): JSX.Element => {
-  const rootDiv = document.getElementById('root');
-  if (!rootDiv) throw new Error("The element #root wasn't found");
-
   // const authLoading = useAuthLoading();
   // const authUser = useAuthUser();
   // const [showDialog, setShowDialog] = useState(false);
@@ -48,7 +45,6 @@ export const Header = (): JSX.Element => {
   }, 300);
 
   useEffect(() => {
-    console.log(document);
     document.addEventListener('scroll', controlHeader);
     document.addEventListener('scroll', controlScrollToTop);
     return () => {
@@ -98,7 +94,7 @@ export const Header = (): JSX.Element => {
                 });
               }}
             />,
-            rootDiv,
+            document.getElementById('__next')!,
           )}
       </StyledDiv>
     </StyledHeader>

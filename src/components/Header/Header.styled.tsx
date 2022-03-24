@@ -29,9 +29,9 @@ export const StyledDiv = styled.div`
 `;
 
 export const StyledIconButton = styled(IconButton)`
-  position: 'fixed',
-  right: '20px',
-  bottom: '20px',
-  cursor: 'pointer',
-  boxShadow: '0px 8px 15px rgba(0, 0, 0, 0.3)',
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  cursor: pointer;
+  box-shadow: 1px 4px 9px rgb(0 0 0 / 30%);
 `;
