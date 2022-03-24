@@ -17,3 +17,13 @@ export interface CardContainerProps {
   $type: CardType;
   $background: CardBackgroundType;
 }
+
+export interface CardFigureImgProps {
+  $type: CardType;
+  imgSrc: string;
+  title: string;
+}
+
+export interface CardFigcaptionProps {
+  $headingPosition: CardHeadingPositionType;
+}
