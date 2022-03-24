@@ -36,4 +36,9 @@ export const defaultTheme: DefaultTheme = {
     xl: pxToRem(18),
     xxl: pxToRem(24),
   },
+
+  break: {
+    mobile: `(max-width: 767px)`,
+    desktop: `(min-width: 768px)`,
+  },
 };
