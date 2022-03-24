@@ -36,10 +36,5 @@ declare module '@emotion/react' {
       xl: string;
       xxl: string;
     };
-
-    break: {
-      mobile: string;
-      desktop: string;
-    };
   }
 }
