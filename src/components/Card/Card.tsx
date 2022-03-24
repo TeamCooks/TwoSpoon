@@ -22,7 +22,7 @@ export const Card = ({
   hasSummary,
   headingPosition,
   // image,
-  imgSrc = '/assets/no-image.jpg',
+  imgSrc = '/images/no-image.jpg',
   title,
   summary = '',
 }: CardProps): JSX.Element => {
@@ -33,6 +33,18 @@ export const Card = ({
 
   const router = useRouter();
   console.log(router);
+  // const authUser = useAuthUser();
+
+  // const handleClick = () => {
+  //   if (authUser) {
+  //     isSaved
+  //       ? setSavedCountBeDisplayed(savedCountBeDisplayed - 1)
+  //       : setSavedCountBeDisplayed(savedCountBeDisplayed + 1);
+  //     setIsSaved(!isSaved);
+  //   } else {
+  //     setShowAuthDialog(true);
+  //   }
+  // };
 
   return (
     <Link href={`${router.pathname}?id=${id}`}>
@@ -40,7 +52,7 @@ export const Card = ({
         <CardContainer $type={type} $background={background}>
           <figure>
             <CardFigureImgContainer $type={type}>
-              <Image src={imgSrc} title={title} />
+              <Image src={imgSrc} title={title} layout="fill" priority />
             </CardFigureImgContainer>
             <CardFigcaption $headingPosition={headingPosition}>{title}</CardFigcaption>
           </figure>
