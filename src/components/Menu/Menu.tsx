@@ -20,6 +20,8 @@ export const Menu = () => {
 
   const router = useRouter();
 
+  /*
+  TODO: 스토리북에서 next.js 설정 후 주석 해제
   useEffect(() => {
     const handleRouteChange = () => {
       setIsOpen(false);
@@ -31,6 +33,7 @@ export const Menu = () => {
       router.events.off('routeChangeStart', handleRouteChange);
     };
   }, []);
+  */
 
   return (
     <StyledNav onBlur={handleBlur}>
