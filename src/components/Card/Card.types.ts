@@ -20,8 +20,6 @@ export interface CardContainerProps {
 
 export interface CardFigureImgProps {
   $type: CardType;
-  imgSrc: string;
-  title: string;
 }
 
 export interface CardFigcaptionProps {

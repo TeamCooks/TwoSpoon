@@ -1,6 +1,18 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
+import { HiCursorClick } from 'react-icons/hi';
+import { excludeTags } from 'utils';
+import {
+  CardButton,
+  CardContainer,
+  CardFigcaption,
+  CardFigureImgContainer,
+  CardLink,
+  CardSummary,
+  CardSummaryText,
+} from './Card.styled';
 import { CardProps } from './Card.types';
 
 export const Card = ({
@@ -9,8 +21,8 @@ export const Card = ({
   background,
   hasSummary,
   headingPosition,
-  image,
-  imgSrc = imgUrl,
+  // image,
+  imgSrc = '/assets/no-image.jpg',
   title,
   summary = '',
 }: CardProps): JSX.Element => {
@@ -20,24 +32,35 @@ export const Card = ({
   const [isLoading, setIsLoading] = useState(false);
 
   const router = useRouter();
+  console.log(router);
 
   return (
     <Link href={`${router.pathname}?id=${id}`}>
-      <div className={classNames(styles.cardWrap, styles[background], { [styles.inlineBlock]: type === 'square' })}>
-        <figure>
-          <img className={styles[type]} src={imgSrc} alt={title} />
-          <figcaption className={classNames(styles.title, styles[headingPosition])}>{title}</figcaption>
-        </figure>
-        {hasSummary && (
-          <>
-            <div className={styles.summary}>{sentenceIntoParagraph(excludeTags(summary), styles.text)}</div>
-            <button className={styles.more}>
-              Click for more
-              <HiCursorClick />
-            </button>
-          </>
-        )}
-      </div>
+      <CardLink role="button">
+        <CardContainer $type={type} $background={background}>
+          <figure>
+            <CardFigureImgContainer $type={type}>
+              <Image src={imgSrc} title={title} />
+            </CardFigureImgContainer>
+            <CardFigcaption $headingPosition={headingPosition}>{title}</CardFigcaption>
+          </figure>
+          {hasSummary && (
+            <>
+              <CardSummary>
+                {excludeTags(summary)
+                  .split('. ')
+                  .map((text, index, texts) => (
+                    <CardSummaryText key={text + index}>{text + (index < texts.length - 1 ? '.' : '')}</CardSummaryText>
+                  ))}
+              </CardSummary>
+              <CardButton>
+                Click for more
+                <HiCursorClick />
+              </CardButton>
+            </>
+          )}
+        </CardContainer>
+      </CardLink>
     </Link>
   );
 };

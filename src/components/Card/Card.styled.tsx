@@ -94,7 +94,7 @@ export const CardContainer = styled.div<CardContainerProps>`
   ${(props) => props.$type === 'square' && inlineBlock}
 `;
 
-export const CardFigureImg = styled.img<CardFigureImgProps>`
+export const CardFigureImgContainer = styled.div<CardFigureImgProps>`
   ${(props) => (props.$type === 'wide' ? wide : props.$type === 'square' ? square : smallSquare)}
 `;
 
@@ -140,7 +140,9 @@ export const CardSummary = styled.div`
     overflow: hidden;
     text-overflow: ellipsis;
   }
+`;
 
+export const CardSummaryText = styled.p`
   margin-top: 0;
   margin-bottom: ${pxToRem(8)};
 `;
