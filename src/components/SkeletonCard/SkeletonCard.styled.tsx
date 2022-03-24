@@ -60,19 +60,34 @@ const hasSummaryFalse = css`
   display: none;
 `;
 
-const bottomLeft = css`
-  background: gray;
-  left: 0;
-`;
-const bottomCenter = css`
-  background: gray;
-  align-self: center;
-`;
+const headingPositionCss = {
+  bottomLeft: css`
+    background: gray;
+    left: 0;
+  `,
+  bottomCenter: css`
+    background: gray;
+    align-self: center;
+  `,
+  topLeft: css`
+    background: gray;
+    order: -1;
+  `,
+};
 
-const topLeft = css`
-  background: gray;
-  order: -1;
-`;
+// const bottomLeft = css`
+//   background: gray;
+//   left: 0;
+// `;
+// const bottomCenter = css`
+//   background: gray;
+//   align-self: center;
+// `;
+
+// const topLeft = css`
+//   background: gray;
+//   order: -1;
+// `;
 
 export const SkeletonContainer = styled.div<SkeletonTypeProps>`
   ${(props) => props.$type === 'square' && inlineBlock}
@@ -101,12 +116,7 @@ export const SkeletonImage = styled.div<SkeletonTypeProps>`
 `;
 
 export const SkeletonTitle = styled.div<SkeletonTitleProps>`
-  ${(props) =>
-    props.$headingPosition === 'topLeft'
-      ? topLeft
-      : props.$headingPosition === 'bottomCenter'
-      ? bottomCenter
-      : bottomLeft}
+  ${({ $headingPosition }) => headingPositionCss[$headingPosition]}
 
   margin: ${pxToRem(16)} 0 !important;
   width: 70%;
