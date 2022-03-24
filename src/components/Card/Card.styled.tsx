@@ -11,64 +11,124 @@ const inlineBlock = css`
   }
 `;
 
-const wide = css`
-  width: 100%;
-  height: 50vw;
-  object-fit: cover;
-
-  ${media.desktop} {
+const typeCss = {
+  wide: css`
     width: 100%;
-    height: 250px;
-  }
-`;
-
-const square = css`
-  width: 100%;
-
-  ${media.mobile} {
     height: 50vw;
-  }
-  ${media.desktop} {
-    height: rem(200px);
-    // 2행
-    @media (max-width: 1547px) {
-      height: 20vw;
+    object-fit: cover;
+
+    ${media.desktop} {
+      width: 100%;
+      height: 250px;
+    }
+  `,
+  square: css`
+    width: 100%;
+
+    ${media.mobile} {
+      height: 50vw;
+    }
+    ${media.desktop} {
+      height: rem(200px);
+      @media (max-width: 1547px) {
+        height: 20vw;
+      }
+
+      @media (max-width: 1100px) {
+        height: 25vw;
+      }
+    }
+    object-fit: cover;
+  `,
+
+  smallSquare: css`
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    ${media.mobile} {
+      aspect-ratio: 16 / 9;
     }
 
-    @media (max-width: 1100px) {
-      height: 25vw;
+    @media (max-width: 1056px) {
+      aspect-ratio: 16 / 9;
     }
-  }
-  object-fit: cover;
-`;
+  `,
+};
 
-const smallSquare = css`
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  object-fit: cover;
-  ${media.mobile} {
-    aspect-ratio: 16 / 9;
-  }
+const headingPositionCss = {
+  bottomLeft: css`
+    font-size: ${pxToRem(20)};
+    left: 0;
+  `,
+  bottomCenter: css`
+    font-size: ${pxToRem(20)};
+    text-align: center;
+  `,
+  topLeft: css`
+    font-size: ${pxToRem(24)};
+    color: orange;
+    order: -1;
+  `,
+};
 
-  @media (max-width: 1056px) {
-    aspect-ratio: 16 / 9;
-  }
-`;
+// const wide = css`
+//   width: 100%;
+//   height: 50vw;
+//   object-fit: cover;
 
-const bottomLeft = css`
-  font-size: ${pxToRem(20)};
-  left: 0;
-`;
+//   ${media.desktop} {
+//     width: 100%;
+//     height: 250px;
+//   }
+// `;
 
-const bottomCenter = css`
-  font-size: ${pxToRem(20)};
-  text-align: center;
-`;
-const topLeft = css`
-  font-size: ${pxToRem(24)};
-  color: orange;
-  order: -1;
-`;
+// const square = css`
+//   width: 100%;
+
+//   ${media.mobile} {
+//     height: 50vw;
+//   }
+//   ${media.desktop} {
+//     height: rem(200px);
+//     // 2행
+//     @media (max-width: 1547px) {
+//       height: 20vw;
+//     }
+
+//     @media (max-width: 1100px) {
+//       height: 25vw;
+//     }
+//   }
+//   object-fit: cover;
+// `;
+
+// const smallSquare = css`
+//   width: 100%;
+//   aspect-ratio: 1 / 1;
+//   object-fit: cover;
+//   ${media.mobile} {
+//     aspect-ratio: 16 / 9;
+//   }
+
+//   @media (max-width: 1056px) {
+//     aspect-ratio: 16 / 9;
+//   }
+// `;
+
+// const bottomLeft = css`
+//   font-size: ${pxToRem(20)};
+//   left: 0;
+// `;
+
+// const bottomCenter = css`
+//   font-size: ${pxToRem(20)};
+//   text-align: center;
+// `;
+// const topLeft = css`
+//   font-size: ${pxToRem(24)};
+//   color: orange;
+//   order: -1;
+// `;
 
 export const CardLink = styled.a`
   width: 100%;
@@ -88,14 +148,14 @@ export const CardContainer = styled.div<CardContainerProps>`
   position: relative;
   cursor: pointer;
 
-  background: ${(props) => (props.$background === 'white' ? 'white' : 'none')};
-  box-shadow: ${(props) => props.$background === 'white' && '0px 4px 4px rgba(0, 0, 0, 0.25);'};
+  background: ${({ $background }) => ($background === 'white' ? 'white' : 'none')};
+  box-shadow: ${({ $background }) => $background === 'white' && '0px 4px 4px rgba(0, 0, 0, 0.25);'};
 
-  ${(props) => props.$type === 'square' && inlineBlock}
+  ${({ $type }) => $type === 'square' && inlineBlock}
 `;
 
 export const CardFigureImgContainer = styled.div<CardFigureImgProps>`
-  ${(props) => (props.$type === 'wide' ? wide : props.$type === 'square' ? square : smallSquare)}
+  ${({ $type }) => typeCss[$type]}
 `;
 
 export const CardFigcaption = styled.figcaption<CardFigcaptionProps>`
@@ -104,12 +164,7 @@ export const CardFigcaption = styled.figcaption<CardFigcaptionProps>`
   padding: ${pxToRem(16)} 0;
   width: 100%;
 
-  ${(props) =>
-    props.$headingPosition === 'topLeft'
-      ? topLeft
-      : props.$headingPosition === 'bottomLeft'
-      ? bottomLeft
-      : bottomCenter}
+  ${({ $headingPosition }) => headingPositionCss[$headingPosition]}
 `;
 
 export const CardSummary = styled.div`
