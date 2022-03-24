@@ -10,7 +10,8 @@ export interface StyledButtonProps {
   color: Color;
   style?: React.CSSProperties;
   className?: string;
-  onClick: () => void;
+  onClick?: () => void;
+  title?: string;
 }
 
 export interface ButtonProps extends StyledButtonProps {
@@ -24,7 +25,7 @@ export interface StyledIconButtonProps {
   circle?: boolean;
   color: Color;
   size: Size;
-  onClick: () => void;
+  onClick?: () => void;
 }
 
 export interface IconButtonProps extends StyledIconButtonProps {

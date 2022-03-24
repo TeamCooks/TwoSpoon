@@ -7,6 +7,8 @@ export const SearchForm = () => {
 
   const router = useRouter();
 
+  /*
+  TODO: 스토리북에서 next.js 설정 후 주석 해제
   useEffect(() => {
     const handleRouteChange = () => {
       setKeyword('');
@@ -18,6 +20,7 @@ export const SearchForm = () => {
       router.events.off('routeChangeStart', handleRouteChange);
     };
   }, []);
+  */
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setKeyword(e.target.value);
