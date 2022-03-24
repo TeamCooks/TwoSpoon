@@ -1,6 +1,6 @@
 
-# Created by https://www.toptal.com/developers/gitignore/api/macos,react,node,visualstudiocode
-# Edit at https://www.toptal.com/developers/gitignore?templates=macos,react,node,visualstudiocode
+# Created by https://www.toptal.com/developers/gitignore/api/react,macos,nextjs,visualstudiocode,node
+# Edit at https://www.toptal.com/developers/gitignore?templates=react,macos,nextjs,visualstudiocode,node
 
 ### macOS ###
 # General
@@ -30,6 +30,10 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
+
+### NextJS ###
+# Next build dir
+.next/
 
 ### Node ###
 # Logs
@@ -205,4 +209,10 @@ sketch
 
 # Support for Project snippet scope
 
-# End of https://www.toptal.com/developers/gitignore/api/macos,react,node,visualstudiocode
+# End of https://www.toptal.com/developers/gitignore/api/react,macos,nextjs,visualstudiocode,node
+
+# firebase
+firebaseConfig.ts
+.firebaserc
+firebase.json
+.firebase

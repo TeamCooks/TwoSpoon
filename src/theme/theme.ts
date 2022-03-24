@@ -1,7 +1,7 @@
-import { DefaultTheme } from 'styled-components';
+import { Theme } from '@emotion/react';
 import { pxToRem } from 'utils';
 
-export const defaultTheme: DefaultTheme = {
+export const theme: Theme = {
   color: {
     primaryGreen: '#529715',
     primaryOrange: '#e56a18',
