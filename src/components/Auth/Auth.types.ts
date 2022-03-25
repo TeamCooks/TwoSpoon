@@ -16,6 +16,7 @@ export interface FormProps {
   initialPasswordConfirm?: string;
   initialUsername?: string;
   currentForm: 'signin' | 'signup';
+  onAuthError: (error: boolean) => void;
 }
 
 export interface StyleInputProps {
