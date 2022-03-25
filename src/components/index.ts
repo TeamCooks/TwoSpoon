@@ -6,3 +6,4 @@ export * from './Layout/Layout';
 export * from './Header/Header';
 export * from './EmptyPage/EmptyPage';
 export * from './SkeletonCard/SkeletonCard';
+export * from './Card/Card';
