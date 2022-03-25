@@ -6,6 +6,10 @@ export const StyledButton = styled.button<StyledButtonProps>`
   border: none;
   background: none;
   border-radius: ${({ round }) => round && '30px'};
+  &:disabled {
+    background-color: ${({ theme }) => theme.color.gray300};
+    cursor: not-allowed;
+  }
 `;
 
 export const StyledOutlineButton = styled(StyledButton)`
