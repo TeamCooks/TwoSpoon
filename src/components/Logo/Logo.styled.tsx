@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import { pxToRem, media } from 'utils';
-import { LogoIcon } from './LogoIcon';
+import LogoIcon from 'assets/icons/logo.svg';
 
 export const StyledA = styled.a`
   display: flex;
