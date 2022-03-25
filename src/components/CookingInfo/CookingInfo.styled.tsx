@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import { BsBookmarkHeartFill } from 'react-icons/bs';
 import { RiTimerFill } from 'react-icons/ri';
 import { pxToRem } from 'utils';
@@ -7,7 +7,7 @@ export const StyledDL = styled.dl`
   color: #cbcbcb;
   font-size: ${pxToRem(24)};
   padding: ${pxToRem(10)} 0;
-  max-width: ${pxToRem(400)};
+  width: 100%;
 `;
 
 export const StyledDiv = styled.div`

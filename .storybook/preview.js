@@ -1,14 +1,15 @@
 import ko from 'axe-core/locales/ko.json';
 import React from 'react';
-import { MemoryRouter } from 'react-router-dom';
 import { GlobalStyle } from 'styles/GlobalStyle';
+import { ThemeProvider } from '@emotion/react';
+import { theme } from 'theme/theme';
 
 export const decorators = [
   (Story) => (
-    <MemoryRouter>
+    <ThemeProvider theme={theme}>
       <GlobalStyle />
       <Story />
-    </MemoryRouter>
+    </ThemeProvider>
   ),
 ];
 
