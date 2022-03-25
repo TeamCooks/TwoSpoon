@@ -32,7 +32,7 @@ export const Card = ({
   const [isLoading, setIsLoading] = useState(false);
 
   const router = useRouter();
-  console.log(router);
+  // useAuthUser 훅 이후 주석해제
   // const authUser = useAuthUser();
 
   // const handleClick = () => {

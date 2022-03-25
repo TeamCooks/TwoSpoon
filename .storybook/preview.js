@@ -4,6 +4,7 @@ import { RouterContext } from 'next/dist/shared/lib/router-context';
 import { GlobalStyle } from 'styles/GlobalStyle';
 import { ThemeProvider } from '@emotion/react';
 import { theme } from 'theme/theme';
+import * as NextImage from 'next/image';
 
 export const decorators = [
   (Story) => (
@@ -29,8 +30,6 @@ export const parameters = {
     },
   },
 };
-
-import * as NextImage from 'next/image';
 
 const OriginalNextImage = NextImage.default;
 
