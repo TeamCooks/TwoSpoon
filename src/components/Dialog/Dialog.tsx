@@ -4,8 +4,6 @@ import { getTabbableElements } from 'utils';
 import { StyledCloseButton, StyledDialogContainer, StyledDialogContent, StyledDim } from './Dialog.styled';
 import { DialogProps } from './Dialog.types';
 
-
-
 export function Dialog({ onClose, children, nodeId = 'dialog', label, ...restProps }: DialogProps) {
   const dialogRef = useRef(null);
   const openButtonRef = useRef(null);
@@ -18,7 +16,7 @@ export function Dialog({ onClose, children, nodeId = 'dialog', label, ...restPro
   useEffect(() => {
     openButtonRef.current = document.activeElement;
 
-    const tabbableElements = getTabbableElements(dialogRef.current);
+    const tabbableElements = getTabbableElements(dialogRef.current!);
     const firstTabbableElement = tabbableElements[0];
     const lastTabbableElement = tabbableElements[tabbableElements.length - 1];
 
@@ -44,11 +42,11 @@ export function Dialog({ onClose, children, nodeId = 'dialog', label, ...restPro
     };
     document.addEventListener(eventType as keyof DocumentEventMap, eventListener as EventListener);
     document.body.style['overflow-y'] = 'hidden';
-    document.getElementById('root').setAttribute('aria-hidden', 'true');
+    document.getElementById('__next')!.setAttribute('aria-hidden', 'true');
 
     return () => {
       document.removeEventListener(eventType, eventListener as EventListener);
-      document.getElementById('root').removeAttribute('aria-hidden');
+      document.getElementById('__next')!.removeAttribute('aria-hidden');
       document.body.style['overflow-y'] = '';
     };
   }, [handleClose, label]);
@@ -65,14 +63,14 @@ export function Dialog({ onClose, children, nodeId = 'dialog', label, ...restPro
       >
         <StyledDialogContent>{children}</StyledDialogContent>
         <StyledCloseButton
-      ariaLabel={`Close ${label} dialog.`}
-      iconType="close"
-      type="button"
-      variant="transparent"
-      color="white"
-      size="large"
-      onClick={onClose}
-    />
+          ariaLabel={`Close ${label} dialog.`}
+          iconType="close"
+          type="button"
+          variant="transparent"
+          color="white"
+          size="large"
+          onClick={onClose}
+        />
       </StyledDialogContainer>
       <StyledDim role="presentation" onClick={onClose} />
     </>,
