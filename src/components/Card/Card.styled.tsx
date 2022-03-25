@@ -71,65 +71,6 @@ const headingPositionCss = {
   `,
 };
 
-// const wide = css`
-//   width: 100%;
-//   height: 50vw;
-//   object-fit: cover;
-
-//   ${media.desktop} {
-//     width: 100%;
-//     height: 250px;
-//   }
-// `;
-
-// const square = css`
-//   width: 100%;
-
-//   ${media.mobile} {
-//     height: 50vw;
-//   }
-//   ${media.desktop} {
-//     height: rem(200px);
-//     // 2행
-//     @media (max-width: 1547px) {
-//       height: 20vw;
-//     }
-
-//     @media (max-width: 1100px) {
-//       height: 25vw;
-//     }
-//   }
-//   object-fit: cover;
-// `;
-
-// const smallSquare = css`
-//   width: 100%;
-//   aspect-ratio: 1 / 1;
-//   object-fit: cover;
-//   ${media.mobile} {
-//     aspect-ratio: 16 / 9;
-//   }
-
-//   @media (max-width: 1056px) {
-//     aspect-ratio: 16 / 9;
-//   }
-// `;
-
-// const bottomLeft = css`
-//   font-size: ${pxToRem(20)};
-//   left: 0;
-// `;
-
-// const bottomCenter = css`
-//   font-size: ${pxToRem(20)};
-//   text-align: center;
-// `;
-// const topLeft = css`
-//   font-size: ${pxToRem(24)};
-//   color: orange;
-//   order: -1;
-// `;
-
 export const CardLink = styled.a`
   width: 100%;
   border: none;
