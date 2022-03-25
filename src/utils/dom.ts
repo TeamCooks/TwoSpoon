@@ -1,4 +1,6 @@
 export const $ = <T extends HTMLElement>(selector: string) => {
-  const element = document.querySelector(selector);
-  return element as T;
+  if (typeof window === 'undefined') {
+    const element = document.querySelector(selector);
+    return element as T;
+  }
 };
