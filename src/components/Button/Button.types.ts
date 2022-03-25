@@ -12,6 +12,7 @@ export interface StyledButtonProps {
   className?: string;
   onClick?: () => void;
   title?: string;
+  disabled?: boolean;
 }
 
 export interface ButtonProps extends StyledButtonProps {
