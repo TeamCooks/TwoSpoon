@@ -65,7 +65,7 @@ export const AuthContainer = () => {
   const [hasAuthError, setAuthError] = useState(false);
   return (
     <StyledAuthContainer>
-      <Heading>{HEADING[currentForm]}</Heading>
+      <Heading as="h1">{HEADING[currentForm]}</Heading>
       {hasAuthError && <StyledAuthError>{AUTH_ERROR_MSG[currentForm]}</StyledAuthError>}
       <Auth currentForm={currentForm} onAuthError={setAuthError} />
     </StyledAuthContainer>
