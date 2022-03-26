@@ -3,12 +3,15 @@ import React from 'react';
 import { GlobalStyle } from 'styles/GlobalStyle';
 import { ThemeProvider } from '@emotion/react';
 import { theme } from 'theme/theme';
+import { StoreProvider } from 'store';
 
 export const decorators = [
   (Story) => (
     <ThemeProvider theme={theme}>
-      <GlobalStyle />
-      <Story />
+      <StoreProvider>
+        <GlobalStyle />
+        <Story />
+      </StoreProvider>
     </ThemeProvider>
   ),
 ];
