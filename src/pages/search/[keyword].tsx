@@ -2,9 +2,11 @@ import { useRouter } from 'next/router';
 import { NextPage } from 'next';
 import { useSearchRecipeQuery } from 'store/services';
 import { useState } from 'react';
+import { ContextProp, SearchPageProps } from './search.types';
 const RESULTS_PER_PAGE = 12;
 
-const Search: NextPage = ({ data }) => {
+const Search: NextPage = ({ results, totalResults }: SearchPageProps) => {
+
   // const {
   //   query: { keyword },
   // } = useRouter();
@@ -17,8 +19,9 @@ const Search: NextPage = ({ data }) => {
   // console.log(data);
   return (
     <div>
+      <h1>{totalResults}</h1>
       <ul>
-        {data.map(({ id, title }) => (
+        {results.map(({ id, title }) => (
           <li key={id}>{title}</li>
         ))}
       </ul>
@@ -26,22 +29,21 @@ const Search: NextPage = ({ data }) => {
   );
 };
 
-export async function getServerSideProps(context) {
-  const { keyword } = context.query;
-  const { results: data } = await fetch(`https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com//recipes/search`, {
-    headers: {
-      'content-type': 'application/json',
-      'x-rapidapi-host': process.env.NEXT_PUBLIC_RAPID_API_HOST,
-      'x-rapidapi-key': process.env.NEXT_PUBLIC_RAPID_API_KEY,
-    },
-    params: {
-      query: keyword,
-      number: RESULTS_PER_PAGE,
-      offset: 0,
-    },
-  }).then((res) => res.json());
+export async function getServerSideProps({ query }: ContextProp) {
+  const { keyword } = query;
+  const { results, totalResults } = await fetch(
+    `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com//recipes/search?query=${keyword}&number=${RESULTS_PER_PAGE}&offset=${0}`,
+    {
+      headers: {
+        'content-type': 'application/json',
+        'x-rapidapi-host': process.env.NEXT_PUBLIC_RAPID_API_HOST,
+        'x-rapidapi-key': process.env.NEXT_PUBLIC_RAPID_API_KEY,
+      },
+    } as RequestInit,
+  ).then((res) => res.json());
   return {
-    props: { data }, 
+    props: { results, totalResults },
   };
 }
+
 export default Search;
