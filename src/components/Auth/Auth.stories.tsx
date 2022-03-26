@@ -5,13 +5,6 @@ import { AuthContainer } from './Auth';
 export default {
   title: 'AuthContainer',
   component: AuthContainer,
-  decorators: [
-    (Story) => (
-      <StoreProvider>
-        <Story />
-      </StoreProvider>
-    ),
-  ],
 } as ComponentMeta<typeof AuthContainer>;
 
 const Template: ComponentStory<typeof AuthContainer> = () => <AuthContainer />;

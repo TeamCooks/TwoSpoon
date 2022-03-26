@@ -13,18 +13,18 @@ import {
   AUTH_ERROR_MSG,
 } from './AuthServices';
 import { Button, Heading } from 'components';
-import { useState } from 'react';
+import { useState, Fragment } from 'react';
 import { useDispatch } from 'react-redux';
 import { actions } from 'store/slices/auth';
 
 const AuthForm = (props: FormProps & FormikProps<FormValues>): JSX.Element => {
   const { currentForm, values, errors, dirty, touched, isValid, handleChange, handleBlur, handleSubmit } = props;
 
-  return (
+  return (  
     <StyledForm onSubmit={handleSubmit}>
       {FIELDS[currentForm].map(
         (field): JSX.Element => (
-          <>
+          <Fragment key={field}>
             <label className="a11yHidden" htmlFor={field}>
               {field.toUpperCase()}
             </label>
@@ -39,7 +39,7 @@ const AuthForm = (props: FormProps & FormikProps<FormValues>): JSX.Element => {
               value={values[field] || ''}
             />
             <StyledFieldError>{touched[field] && errors[field]}</StyledFieldError>
-          </>
+          </Fragment>
         ),
       )}
 
