@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { IconButton } from 'components';
 
-const headerHeight = 70;
+export const headerHeight = 70;
 
 export const StyledHeader = styled.header`
   background-color: ${({ theme }) => theme.color.white};
