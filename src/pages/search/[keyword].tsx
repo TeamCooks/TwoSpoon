@@ -2,10 +2,11 @@ import { useRouter } from 'next/router';
 import { NextPage } from 'next';
 import { useSearchRecipeQuery } from 'store/services';
 import { useState } from 'react';
-import { ContextProp } from './search.types';
+import { ContextProp, SearchPageProps } from './search.types';
 const RESULTS_PER_PAGE = 12;
 
-const Search: NextPage = ({ data }) => {
+const Search: NextPage = ({ results, totalResults }: SearchPageProps) => {
+
   // const {
   //   query: { keyword },
   // } = useRouter();
@@ -18,8 +19,9 @@ const Search: NextPage = ({ data }) => {
   // console.log(data);
   return (
     <div>
+      <h1>{totalResults}</h1>
       <ul>
-        {data.map(({ id, title }) => (
+        {results.map(({ id, title }) => (
           <li key={id}>{title}</li>
         ))}
       </ul>
@@ -29,7 +31,7 @@ const Search: NextPage = ({ data }) => {
 
 export async function getServerSideProps({ query }: ContextProp) {
   const { keyword } = query;
-  const { results: data } = await fetch(
+  const { results, totalResults } = await fetch(
     `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com//recipes/search?query=${keyword}&number=${RESULTS_PER_PAGE}&offset=${0}`,
     {
       headers: {
@@ -40,7 +42,7 @@ export async function getServerSideProps({ query }: ContextProp) {
     } as RequestInit,
   ).then((res) => res.json());
   return {
-    props: { data },
+    props: { results, totalResults },
   };
 }
 
