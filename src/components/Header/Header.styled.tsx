@@ -9,13 +9,12 @@ export const StyledHeader = styled.header`
   padding: 0 10px 0 20px;
   position: fixed;
   top: 0;
+  ${({ hide }) => hide && `top: ${-1 * headerHeight}px;`}
   left: 0;
   right: 0;
   transition: top 0.2s ease-in-out;
   z-index: 10;
-
   &.hide {
-    top: ${-1 * headerHeight}px;
   }
 `;
 

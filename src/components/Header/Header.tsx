@@ -1,21 +1,17 @@
-import { SearchForm, Menu, Button, Logo } from 'components';
+import { SearchForm, Menu, Button, Logo, AuthContainer, Dialog } from 'components';
 import { useState, useEffect, useRef } from 'react';
-// import { useAuthLoading, useAuthUser } from '../../contexts/AuthContext';
 import lodash from 'lodash';
 import { createPortal } from 'react-dom';
-import { StyledHeader, StyledDiv, StyledIconButton } from './Header.styled';
+import { StyledHeader, StyledDiv, StyledIconButton, headerHeight } from './Header.styled';
+import { useSelector } from 'react-redux';
 
 export const Header = (): JSX.Element => {
-  // const authLoading = useAuthLoading();
-  // const authUser = useAuthUser();
-  // const [showDialog, setShowDialog] = useState(false);
-
-  const [tempAuth, setTempAuth] = useState(false);
+  const [showDialog, setShowDialog] = useState(false);
   const [hideHeader, setHideHeader] = useState(false);
   const [showScrollToTop, setShowScrollToTop] = useState(false);
   const oldScrollTop = useRef(0);
+  const { authUser, isLoading } = useSelector((state) => state.auth);
 
-  /*
   const handleOpenDialog = () => {
     setShowDialog(true);
   };
@@ -23,19 +19,18 @@ export const Header = (): JSX.Element => {
   const handleCloseDialog = () => {
     setShowDialog(false);
   };
-  */
 
   const handleFocus = () => {
     setHideHeader(false);
   };
 
   const handleBlur = () => {
-    setHideHeader(window.pageYOffset > 70);
+    setHideHeader(window.pageYOffset > headerHeight);
   };
 
   const controlHeader = lodash.throttle(() => {
     const currentScrollTop = window.pageYOffset;
-    setHideHeader(currentScrollTop > 70 && currentScrollTop > oldScrollTop.current);
+    setHideHeader(currentScrollTop > headerHeight && currentScrollTop > oldScrollTop.current);
     oldScrollTop.current = currentScrollTop;
   }, 300);
 
@@ -54,11 +49,11 @@ export const Header = (): JSX.Element => {
   }, []);
 
   return (
-    <StyledHeader onFocus={handleFocus} onBlur={handleBlur}>
+    <StyledHeader onFocus={handleFocus} onBlur={handleBlur} hide={hideHeader && isLoading}>
       <StyledDiv>
         <Logo />
         <SearchForm />
-        {tempAuth ? (
+        {authUser ? (
           <Menu />
         ) : (
           <>
@@ -68,12 +63,16 @@ export const Header = (): JSX.Element => {
               aria-haspopup="dialog"
               aria-label="Open SignIn Dialog"
               title="Open SignIn Dialog"
-              // onClick={handleOpenDialog}
+              onClick={handleOpenDialog}
               color="black"
             >
               Sign In
             </Button>
-            {/* <Auth isVisible={showDialog} onClose={handleClos /eDialog} /> */}
+            {showDialog && (
+              <Dialog label="login" onClose={handleCloseDialog}>
+                <AuthContainer />
+              </Dialog>
+            )}
           </>
         )}
         {showScrollToTop &&
