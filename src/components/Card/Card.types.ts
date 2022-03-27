@@ -10,7 +10,7 @@ export interface CardProps {
   headingPosition: CardHeadingPositionType;
   imgSrc: string;
   title: string;
-  summary: string;
+  summary?: string;
 }
 
 export interface CardContainerProps {
