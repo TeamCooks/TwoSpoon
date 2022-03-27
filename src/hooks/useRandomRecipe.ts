@@ -7,7 +7,7 @@ export const useRandomRecipe = () => {
   const [savedRecipe, setSavedRecipe] = useState<RandomRecipe | {}>({});
   const [recipe, setRecipe] = useState<RandomRecipe | {}>({});
 
-  const { data, isLoading } = useGetRandomRecipeQuery(2);
+  const { data, error, isLoading } = useGetRandomRecipeQuery(2);
 
   useEffect(() => {
     if (data) {
@@ -32,5 +32,5 @@ export const useRandomRecipe = () => {
     }, 300);
   };
 
-  return { recipe, isLoading, handleClick };
+  return { recipe, error, isLoading, handleClick };
 };

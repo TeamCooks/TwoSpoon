@@ -2,7 +2,6 @@ import styled from '@emotion/styled';
 import { Button } from '../';
 import { media, pxToRem } from 'utils';
 import { GiPerspectiveDiceSixFacesRandom } from 'react-icons/gi';
-import { StyledButtonProps } from 'components/Button/Button.types';
 
 export const RandomRecipeSection = styled.section`
   flex-grow: 1;
