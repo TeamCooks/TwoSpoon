@@ -5,7 +5,7 @@ import { media, pxToRem } from 'utils';
 export const HotRecipesSection = styled.section`
   ${media.desktop} {
     flex-grow: 2;
-    padding-top: ${pxToRem}(20);
+    padding-top: ${pxToRem(20)};
     height: 80vh;
   }
 `;
