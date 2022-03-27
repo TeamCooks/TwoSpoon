@@ -1,4 +1,4 @@
-type IconType =
+export type IconType =
   | 'dairyFree'
   | 'lactoOvo'
   | 'lactoOvoVegetarian'
