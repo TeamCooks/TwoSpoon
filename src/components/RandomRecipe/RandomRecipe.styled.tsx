@@ -2,10 +2,12 @@ import styled from '@emotion/styled';
 import { Button } from '../';
 import { media, pxToRem } from 'utils';
 import { GiPerspectiveDiceSixFacesRandom } from 'react-icons/gi';
+import { StyledButtonProps } from 'components/Button/Button.types';
 
 export const RandomRecipeSection = styled.section`
   flex-grow: 1;
   position: relative;
+  font-family: inherit;
 
   ${media.desktop} {
     height: 80vh;
@@ -17,6 +19,9 @@ export const RandomRecipeSection = styled.section`
 `;
 
 export const RandomRecipeButton = styled(Button)`
+  display: flex;
+  align-items: center;
+  gap: 10px;
   position: absolute;
   top: 0;
   right: 0;
@@ -32,10 +37,6 @@ export const RandomRecipeButton = styled(Button)`
     margin: ${pxToRem(36)} 0 ${pxToRem(36)} ${pxToRem(36)};
     padding: ${pxToRem(6)} ${pxToRem(18)};
   }
-
-  display: 'flex';
-  align-items: 'center';
-  gap: '10px';
 `;
 
 export const RandomDiceIcon = styled(GiPerspectiveDiceSixFacesRandom)`

@@ -5,12 +5,15 @@ import { GlobalStyle } from 'styles/GlobalStyle';
 import { ThemeProvider } from '@emotion/react';
 import { theme } from 'theme/theme';
 import * as NextImage from 'next/image';
+import { StoreProvider } from 'store';
 
 export const decorators = [
   (Story) => (
     <ThemeProvider theme={theme}>
-      <GlobalStyle />
-      <Story />
+      <StoreProvider>
+        <GlobalStyle />
+        <Story />
+      </StoreProvider>
     </ThemeProvider>
   ),
 ];
