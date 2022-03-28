@@ -26,29 +26,9 @@ export const Card = ({
   title,
   summary = '',
 }: CardProps): JSX.Element => {
-  const [recipeData, setRecipeData] = useState({});
-  const [savedCountBeDisplayed, setSavedCountBeDisplayed] = useState(0);
-  const [isSaved, setIsSaved] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-
-  const router = useRouter();
-  // useAuthUser 훅 이후 주석해제
-  // const authUser = useAuthUser();
-
-  // const handleClick = () => {
-  //   if (authUser) {
-  //     isSaved
-  //       ? setSavedCountBeDisplayed(savedCountBeDisplayed - 1)
-  //       : setSavedCountBeDisplayed(savedCountBeDisplayed + 1);
-  //     setIsSaved(!isSaved);
-  //   } else {
-  //     setShowAuthDialog(true);
-  //   }
-  // };
-
   return (
-    <Link href={`${router.pathname}?id=${id}`}>
-      <CardLink role="button">
+    <Link href={`/recipe/${id}`}>
+      <CardLink>
         <CardContainer $type={type} $background={background}>
           <figure>
             <CardFigureImgContainer $type={type}>
