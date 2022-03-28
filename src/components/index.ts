@@ -11,3 +11,6 @@ export * from './Header/Header';
 export * from './EmptyPage/EmptyPage';
 export * from './SearchForm/SearchForm';
 export * from './SkeletonCard/SkeletonCard';
+export * from './Card/Card';
+export * from './RandomRecipe/RandomRecipe';
+export * from './HotRecipes/HotRecipes';
