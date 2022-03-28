@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import { pxToRem } from 'utils';
-import { StyleInputProps } from './Auth.types';
+import { StyledInputProps } from './Auth.types';
 
 export const StyledAuthContainer = styled.div`
   h1 {
@@ -43,7 +43,7 @@ export const StyledFieldError = styled.div`
   padding: 0 ${pxToRem(20)};
 `;
 
-export const StyledInput = styled.input<StyleInputProps>`
+export const StyledInput = styled.input<StyledInputProps>`
   padding: 0 ${pxToRem(24)};
   height: ${pxToRem(36)};
   border: none;

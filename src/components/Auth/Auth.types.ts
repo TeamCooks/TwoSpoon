@@ -19,6 +19,6 @@ export interface FormProps {
   onSubmit: (values: {}) => void;
 }
 
-export interface StyleInputProps {
+export interface StyledInputProps {
   $warning: boolean;
 }

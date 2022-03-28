@@ -49,7 +49,7 @@ export const Header = (): JSX.Element => {
   }, []);
 
   return (
-    <StyledHeader onFocus={handleFocus} onBlur={handleBlur} hide={hideHeader && isLoading}>
+    <StyledHeader onFocus={handleFocus} onBlur={handleBlur} $hide={hideHeader && isLoading}>
       <StyledDiv>
         <Logo />
         <SearchForm />
