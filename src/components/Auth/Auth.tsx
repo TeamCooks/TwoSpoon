@@ -43,7 +43,7 @@ const AuthForm = (props: FormProps & FormikProps<FormValues>): JSX.Element => {
         ),
       )}
 
-      <Button variant="filled" round={true} color="primaryGreen" type="submit" disabled={!dirty || !isValid}>
+      <Button variant="filled" color="primaryGreen" type="submit" disabled={!dirty || !isValid}>
         {HEADING[currentForm]}
       </Button>
     </StyledForm>

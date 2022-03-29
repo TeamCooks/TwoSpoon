@@ -10,7 +10,6 @@ export const StyledAuthContainer = styled.div`
 
 export const StyledForm = styled.form`
   margin: ${pxToRem(18)} auto;
-  min-width: ${pxToRem(280)};
   display: flex;
   flex-direction: column;
   gap: ${pxToRem(4)};
@@ -49,4 +48,5 @@ export const StyledInput = styled.input<StyledInputProps>`
   border: none;
   border-radius: ${pxToRem(5)} ${pxToRem(5)};
   ${({ $warning, theme }) => $warning && `box-shadow: 0 0 1px 5px ${theme.color.primaryOrange};`}
+  background-color: ${({ theme }) => theme.color.searchGray};
 `;
