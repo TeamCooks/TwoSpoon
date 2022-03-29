@@ -1,4 +1,4 @@
-import { Header } from '..';
+import { Header } from 'components';
 import { StyledMain } from './Layout.styled';
 import { LayoutProps } from './Layout.types';
 
