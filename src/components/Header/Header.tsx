@@ -2,10 +2,10 @@ import { SearchForm, Menu, Button, Logo, AuthContainer, Dialog } from 'component
 import { useState, useEffect, useRef } from 'react';
 import lodash from 'lodash';
 import { createPortal } from 'react-dom';
-import { StyledHeader, StyledDiv, StyledIconButton, headerHeight } from './Header.styled';
+import { AuthState } from 'store/slices/auth';
 import { useSelector } from 'react-redux';
 import { RootState } from 'store';
-import { AuthState } from 'store/slices/auth';
+import { StyledHeader, StyledDiv, StyledIconButton, headerHeight } from './Header.styled';
 
 export const Header = (): JSX.Element => {
   const [showDialog, setShowDialog] = useState(false);
@@ -70,11 +70,7 @@ export const Header = (): JSX.Element => {
             >
               Sign In
             </Button>
-            {showDialog && (
-              <Dialog label="login" onClose={handleCloseDialog}>
-                <AuthContainer onClose={handleCloseDialog}/>
-              </Dialog>
-            )}
+            {showDialog && <AuthContainer onClose={handleCloseDialog} />}
           </>
         )}
         {showScrollToTop &&

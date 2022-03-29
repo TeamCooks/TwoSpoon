@@ -1,5 +1,5 @@
 import { actions } from 'store/slices/auth';
-import { Button, Heading } from 'components';
+import { Button, Heading, Dialog } from 'components';
 import { useState, Fragment } from 'react';
 import { useDispatch } from 'react-redux';
 import { FormikProps, withFormik } from 'formik';
@@ -86,13 +86,15 @@ export const AuthContainer = ({ onClose }: AuthContainerProps) => {
     }
   };
   return (
-    <StyledAuthContainer>
-      <Heading as="h1">{HEADING[currentForm]}</Heading>
-      {hasAuthError && <StyledAuthError>{AUTH_ERROR_MSG[currentForm]}</StyledAuthError>}
-      <Auth key={currentForm} currentForm={currentForm} onSubmit={handleSubmit} />
-      <StyledToggleButton color="black" variant="transparent" type="button" onClick={toggleCurrentForm}>
-        {TOGGLE_MESSAGE[currentForm]}
-      </StyledToggleButton>
-    </StyledAuthContainer>
+    <Dialog label={currentForm} onClose={onClose}>
+      <StyledAuthContainer>
+        <Heading as="h1">{HEADING[currentForm]}</Heading>
+        {hasAuthError && <StyledAuthError>{AUTH_ERROR_MSG[currentForm]}</StyledAuthError>}
+        <Auth key={currentForm} currentForm={currentForm} onSubmit={handleSubmit} />
+        <StyledToggleButton color="black" variant="transparent" type="button" onClick={toggleCurrentForm}>
+          {TOGGLE_MESSAGE[currentForm]}
+        </StyledToggleButton>
+      </StyledAuthContainer>
+    </Dialog>
   );
 };
