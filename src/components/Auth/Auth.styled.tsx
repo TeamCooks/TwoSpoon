@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import { pxToRem } from 'utils';
+import { Button } from 'components';
 import { StyledInputProps } from './Auth.types';
 
 export const StyledAuthContainer = styled.div`
@@ -49,4 +50,12 @@ export const StyledInput = styled.input<StyledInputProps>`
   border-radius: ${pxToRem(5)} ${pxToRem(5)};
   ${({ $warning, theme }) => $warning && `box-shadow: 0 0 1px 5px ${theme.color.primaryOrange};`}
   background-color: ${({ theme }) => theme.color.searchGray};
+`;
+
+export const StyledToggleButton = styled(Button)`
+  text-align: center;
+  width: 100%;
+  :hover {
+    text-decoration: underline;
+  }
 `;

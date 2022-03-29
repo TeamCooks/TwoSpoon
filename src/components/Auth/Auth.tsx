@@ -1,6 +1,17 @@
+import { actions } from 'store/slices/auth';
+import { Button, Heading } from 'components';
+import { useState, Fragment } from 'react';
+import { useDispatch } from 'react-redux';
 import { FormikProps, withFormik } from 'formik';
-import { FormValues, FormProps, AuthContainerProps } from './Auth.types';
-import { StyledForm, StyledInput, StyledAuthError, StyledFieldError, StyledAuthContainer } from './Auth.styled';
+import { FormValues, FormProps, AuthContainerProps, Form } from './Auth.types';
+import {
+  StyledForm,
+  StyledInput,
+  StyledAuthError,
+  StyledFieldError,
+  StyledAuthContainer,
+  StyledToggleButton,
+} from './Auth.styled';
 import {
   AUTH_STATE,
   AUTH_FUNC,
@@ -11,11 +22,8 @@ import {
   PLACEHOLDER,
   TYPE,
   AUTH_ERROR_MSG,
+  TOGGLE_MESSAGE,
 } from './AuthServices';
-import { Button, Heading } from 'components';
-import { useState, Fragment } from 'react';
-import { useDispatch } from 'react-redux';
-import { actions } from 'store/slices/auth';
 
 const AuthForm = (props: FormProps & FormikProps<FormValues>): JSX.Element => {
   const { currentForm, values, errors, dirty, touched, isValid, handleChange, handleBlur, handleSubmit } = props;
@@ -59,11 +67,15 @@ const Auth = withFormik<FormProps, FormValues>({
 })(AuthForm);
 
 export const AuthContainer = ({ onClose }: AuthContainerProps) => {
-  const [currentForm, setCurrentForm] = useState(AUTH_STATE.signin);
+  const [currentForm, setCurrentForm] = useState<Form>(AUTH_STATE.signin);
   const [hasAuthError, setAuthError] = useState(false);
   const dispatch = useDispatch();
 
-  const handleSubmit = async (values) => {
+  const toggleCurrentForm = () => {
+    setCurrentForm(currentForm === AUTH_STATE.signin ? AUTH_STATE.signup : AUTH_STATE.signin);
+  };
+
+  const handleSubmit = async (values: FormValues) => {
     try {
       dispatch(actions.loading(true));
       const { uid: userId } = await AUTH_FUNC[currentForm](values);
@@ -77,7 +89,10 @@ export const AuthContainer = ({ onClose }: AuthContainerProps) => {
     <StyledAuthContainer>
       <Heading as="h1">{HEADING[currentForm]}</Heading>
       {hasAuthError && <StyledAuthError>{AUTH_ERROR_MSG[currentForm]}</StyledAuthError>}
-      <Auth currentForm={currentForm} onSubmit={handleSubmit} />
+      <Auth key={currentForm} currentForm={currentForm} onSubmit={handleSubmit} />
+      <StyledToggleButton color="black" variant="transparent" type="button" onClick={toggleCurrentForm}>
+        {TOGGLE_MESSAGE[currentForm]}
+      </StyledToggleButton>
     </StyledAuthContainer>
   );
 };
