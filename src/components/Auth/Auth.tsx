@@ -66,7 +66,7 @@ const Auth = withFormik<FormProps, FormValues>({
   },
 })(AuthForm);
 
-export const AuthContainer = ({ onClose }: AuthContainerProps) => {
+export const AuthContainer = ({ onClose, onToast }: AuthContainerProps) => {
   const [currentForm, setCurrentForm] = useState<Form>(AUTH_STATE.signin);
   const [hasAuthError, setAuthError] = useState(false);
   const dispatch = useDispatch();
@@ -81,6 +81,7 @@ export const AuthContainer = ({ onClose }: AuthContainerProps) => {
       const { uid: userId } = await AUTH_FUNC[currentForm](values);
       dispatch(actions.signIn(userId));
       onClose();
+      onToast();
     } catch (e) {
       setAuthError(true);
     }

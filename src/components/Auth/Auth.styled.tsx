@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { pxToRem } from 'utils';
+import { media, pxToRem } from 'utils';
 import { Button } from 'components';
 import { StyledInputProps } from './Auth.types';
 
@@ -30,7 +30,7 @@ export const StyledAuthError = styled.div`
   padding: ${pxToRem(16)} 0;
   margin: ${pxToRem(18)} auto;
   max-width: ${pxToRem(400)};
-  min-width: ${pxToRem(280)};
+  ${media.mobile && 'padding: 20px;'}
   text-align: center;
   color: white;
 `;
