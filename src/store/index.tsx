@@ -15,3 +15,5 @@ export const store = configureStore({
 export const StoreProvider = (props: { children: ReactNode }) => {
   return <Provider store={store} {...props} />;
 };
+
+export type RootState = ReturnType<typeof store.getState>;

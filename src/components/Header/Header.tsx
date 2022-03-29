@@ -4,13 +4,15 @@ import lodash from 'lodash';
 import { createPortal } from 'react-dom';
 import { StyledHeader, StyledDiv, StyledIconButton, headerHeight } from './Header.styled';
 import { useSelector } from 'react-redux';
+import { RootState } from 'store';
+import { AuthState } from 'store/slices/auth';
 
 export const Header = (): JSX.Element => {
   const [showDialog, setShowDialog] = useState(false);
   const [hideHeader, setHideHeader] = useState(false);
   const [showScrollToTop, setShowScrollToTop] = useState(false);
   const oldScrollTop = useRef(0);
-  const { authUser, isLoading } = useSelector((state) => state.auth);
+  const { authUser, isLoading } = useSelector<RootState, AuthState>((state) => state.auth);
 
   const handleOpenDialog = () => {
     setShowDialog(true);

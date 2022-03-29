@@ -7,7 +7,7 @@ export interface AuthState {
 
 const AuthSlice = createSlice({
   name: 'Auth',
-  initialState: { isLoading: false, authUser: 'hahahah' },
+  initialState: { isLoading: false, authUser: null },
   reducers: {
     loading: (state: AuthState, action: PayloadAction) => ({ ...state, isLoading: action.payload }),
     signIn: (state: AuthState, action: PayloadAction) => ({ authUser: action.payload, isLoading: false }),
