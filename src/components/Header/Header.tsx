@@ -1,14 +1,16 @@
-import { SearchForm, Menu, Button, Logo, AuthContainer, Dialog } from 'components';
-import { useState, useEffect, useRef } from 'react';
+import { AuthContainer, Button, Logo, Menu, SearchForm, Toast } from 'components';
 import lodash from 'lodash';
+import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { AuthState } from 'store/slices/auth';
 import { useSelector } from 'react-redux';
 import { RootState } from 'store';
-import { StyledHeader, StyledDiv, StyledIconButton, headerHeight } from './Header.styled';
+import { AuthState } from 'store/slices/auth';
+import { HEADER_HEIGHT } from 'styles/GlobalStyle';
+import { StyledDiv, StyledHeader, StyledIconButton } from './Header.styled';
 
 export const Header = (): JSX.Element => {
   const [showDialog, setShowDialog] = useState(false);
+  const [showToast, setShowToast] = useState(false);
   const [hideHeader, setHideHeader] = useState(false);
   const [showScrollToTop, setShowScrollToTop] = useState(false);
   const oldScrollTop = useRef(0);
@@ -22,12 +24,17 @@ export const Header = (): JSX.Element => {
     setShowDialog(false);
   };
 
+  const handleToast = () => {
+    setShowToast(true);
+    setTimeout(() => setShowToast(false), 2000);
+  };
+
   const handleFocus = () => {
     setHideHeader(false);
   };
 
   const handleBlur = () => {
-    setHideHeader(window.pageYOffset > headerHeight);
+    setHideHeader(window.pageYOffset > HEADER_HEIGHT);
   };
 
   const controlHeader = lodash.throttle(() => {
@@ -70,7 +77,7 @@ export const Header = (): JSX.Element => {
             >
               Sign In
             </Button>
-            {showDialog && <AuthContainer onClose={handleCloseDialog} />}
+            {showDialog && <AuthContainer onClose={handleCloseDialog} onToast={handleToast} />}
           </>
         )}
         {showScrollToTop &&
@@ -94,6 +101,7 @@ export const Header = (): JSX.Element => {
             document.getElementById('__next')!,
           )}
       </StyledDiv>
+      {showToast && <Toast message="Logged-in successfully!" />}
     </StyledHeader>
   );
 };
