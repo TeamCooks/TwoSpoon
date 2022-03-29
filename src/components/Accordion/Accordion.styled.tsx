@@ -19,3 +19,17 @@ export const StyledHeading = styled.h3`
   display: inline-block;
   font-size: 1.625rem;
 `;
+
+export const StyledIngredient = styled.li`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  span:first-child {
+    width: 50%;
+  }
+`;
+
+export const StyledAccordionText = styled.p`
+  margin-top: 0;
+`;
