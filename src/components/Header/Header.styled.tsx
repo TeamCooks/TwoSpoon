@@ -15,8 +15,6 @@ export const StyledHeader = styled.header<StyledHeaderProps>`
   right: 0;
   transition: top 0.2s ease-in-out;
   z-index: 10;
-  &.hide {
-  }
 `;
 
 export const StyledDiv = styled.div`
