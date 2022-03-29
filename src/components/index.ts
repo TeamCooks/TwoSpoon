@@ -14,3 +14,6 @@ export * from './SearchForm/SearchForm';
 export * from './SkeletonCard/SkeletonCard';
 export * from './Auth/Auth';
 export * from './ErrorBoundary/ErrorBoundary';
+export * from './Card/Card';
+export * from './RandomRecipe/RandomRecipe';
+export * from './HotRecipes/HotRecipes';
