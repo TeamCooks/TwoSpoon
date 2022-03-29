@@ -1,5 +1,5 @@
 import { FormikProps, withFormik } from 'formik';
-import { FormValues, FormProps } from './Auth.types';
+import { FormValues, FormProps, AuthContainerProps } from './Auth.types';
 import { StyledForm, StyledInput, StyledAuthError, StyledFieldError, StyledAuthContainer } from './Auth.styled';
 import {
   AUTH_STATE,
@@ -20,7 +20,7 @@ import { actions } from 'store/slices/auth';
 const AuthForm = (props: FormProps & FormikProps<FormValues>): JSX.Element => {
   const { currentForm, values, errors, dirty, touched, isValid, handleChange, handleBlur, handleSubmit } = props;
 
-  return (  
+  return (
     <StyledForm onSubmit={handleSubmit}>
       {FIELDS[currentForm].map(
         (field): JSX.Element => (
@@ -58,7 +58,7 @@ const Auth = withFormik<FormProps, FormValues>({
   },
 })(AuthForm);
 
-export const AuthContainer = () => {
+export const AuthContainer = ({ onClose }: AuthContainerProps) => {
   const [currentForm, setCurrentForm] = useState(AUTH_STATE.signin);
   const [hasAuthError, setAuthError] = useState(false);
   const dispatch = useDispatch();
@@ -67,8 +67,8 @@ export const AuthContainer = () => {
     try {
       dispatch(actions.loading(true));
       const { uid: userId } = await AUTH_FUNC[currentForm](values);
-      if (currentForm === AUTH_STATE.signin) dispatch(actions.signIn(userId));
-      else dispatch(actions.loading(false));
+      dispatch(actions.signIn(userId));
+      onClose();
     } catch (e) {
       setAuthError(true);
     }

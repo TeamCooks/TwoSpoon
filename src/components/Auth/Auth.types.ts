@@ -22,3 +22,8 @@ export interface FormProps {
 export interface StyledInputProps {
   $warning: boolean;
 }
+
+
+export interface AuthContainerProps {
+  onClose: () => void;
+}

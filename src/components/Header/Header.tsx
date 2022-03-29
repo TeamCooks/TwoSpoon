@@ -70,7 +70,7 @@ export const Header = (): JSX.Element => {
             </Button>
             {showDialog && (
               <Dialog label="login" onClose={handleCloseDialog}>
-                <AuthContainer />
+                <AuthContainer onClose={handleCloseDialog}/>
               </Dialog>
             )}
           </>
