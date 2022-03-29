@@ -13,3 +13,4 @@ export * from './EmptyPage/EmptyPage';
 export * from './SearchForm/SearchForm';
 export * from './SkeletonCard/SkeletonCard';
 export * from './Auth/Auth';
+export * from './ErrorBoundary/ErrorBoundary';
