@@ -1,42 +1,83 @@
 import { FormikProps, withFormik } from 'formik';
-import { FormValues, FormProps } from './Auth.types';
-import { StyledInput, StyledFieldError } from './Auth.styled';
-import { AUTH_FUNC, SCHEMA, INITIAL_VALUES, FIELDS, HEADING, PLACEHOLDER, TYPE } from './AuthServices';
+import { FormValues, FormProps, AuthContainerProps } from './Auth.types';
+import { StyledForm, StyledInput, StyledAuthError, StyledFieldError, StyledAuthContainer } from './Auth.styled';
+import {
+  AUTH_STATE,
+  AUTH_FUNC,
+  SCHEMA,
+  INITIAL_VALUES,
+  FIELDS,
+  HEADING,
+  PLACEHOLDER,
+  TYPE,
+  AUTH_ERROR_MSG,
+} from './AuthServices';
+import { Button, Heading } from 'components';
+import { useState, Fragment } from 'react';
+import { useDispatch } from 'react-redux';
+import { actions } from 'store/slices/auth';
 
 const AuthForm = (props: FormProps & FormikProps<FormValues>): JSX.Element => {
   const { currentForm, values, errors, dirty, touched, isValid, handleChange, handleBlur, handleSubmit } = props;
-  return (
-    <form onSubmit={handleSubmit}>
-      {FIELDS[currentForm].map((field): JSX.Element => (
-        <>
-          <label className="a11yHidden" htmlFor={field}>
-            {field.toUpperCase()}
-          </label>
-          <StyledInput
-            id={field}
-            $warning={touched[field] && errors[field]}
-            name={field}
-            placeholder={PLACEHOLDER[field]}
-            type={TYPE[field]}
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={values[field] || ''}
-          />
-          <StyledFieldError>{touched[field] && errors[field]}</StyledFieldError>
-        </>
-      ))}
 
-      <button type="submit" disabled={!dirty || !isValid}>
+  return (
+    <StyledForm onSubmit={handleSubmit}>
+      {FIELDS[currentForm].map(
+        (field): JSX.Element => (
+          <Fragment key={field}>
+            <label className="a11yHidden" htmlFor={field}>
+              {field.toUpperCase()}
+            </label>
+            <StyledInput
+              id={field}
+              $warning={touched[field] && errors[field]}
+              name={field}
+              placeholder={PLACEHOLDER[field]}
+              type={TYPE[field]}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values[field] || ''}
+            />
+            <StyledFieldError>{touched[field] && errors[field]}</StyledFieldError>
+          </Fragment>
+        ),
+      )}
+
+      <Button variant="filled" round={true} color="primaryGreen" type="submit" disabled={!dirty || !isValid}>
         {HEADING[currentForm]}
-      </button>
-    </form>
+      </Button>
+    </StyledForm>
   );
 };
 
-export const Auth = withFormik<FormProps, FormValues>({
+const Auth = withFormik<FormProps, FormValues>({
   mapPropsToValues: ({ currentForm }) => INITIAL_VALUES[currentForm],
   validationSchema: ({ currentForm }: FormProps) => SCHEMA[currentForm],
-  handleSubmit(values: FormValues, { props: { currentForm } }) {
-    AUTH_FUNC[currentForm](values);
+  handleSubmit: async (values: FormValues, { props: { onSubmit } }) => {
+    onSubmit(values);
   },
 })(AuthForm);
+
+export const AuthContainer = ({ onClose }: AuthContainerProps) => {
+  const [currentForm, setCurrentForm] = useState(AUTH_STATE.signin);
+  const [hasAuthError, setAuthError] = useState(false);
+  const dispatch = useDispatch();
+
+  const handleSubmit = async (values) => {
+    try {
+      dispatch(actions.loading(true));
+      const { uid: userId } = await AUTH_FUNC[currentForm](values);
+      dispatch(actions.signIn(userId));
+      onClose();
+    } catch (e) {
+      setAuthError(true);
+    }
+  };
+  return (
+    <StyledAuthContainer>
+      <Heading as="h1">{HEADING[currentForm]}</Heading>
+      {hasAuthError && <StyledAuthError>{AUTH_ERROR_MSG[currentForm]}</StyledAuthError>}
+      <Auth currentForm={currentForm} onSubmit={handleSubmit} />
+    </StyledAuthContainer>
+  );
+};

@@ -16,7 +16,6 @@ export const twoSpoonApi = createApi({
   endpoints: (builder) => ({
     getRandomRecipe: builder.query<RandomRecipeQuery, number>({
       query: (number = 1) => `recipes/random?number=${number}`,
-      // transformResponse: (response: { data: RandomRecipeQuery }) => response.data,
     }),
   }),
 });

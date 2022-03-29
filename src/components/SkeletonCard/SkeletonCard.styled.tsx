@@ -27,22 +27,23 @@ const inlineBlock = css`
   justify-content: center;
 `;
 
-const squareType = css`
-  width: ${pxToRem(200)};
-  height: ${pxToRem(200)};
-  background: gray;
-`;
-
-const wideType = css`
-  width: 100%;
-  height: 50vw;
-  background: gray;
-
-  ${media.desktop} {
+const typeCss = {
+  square: css`
+    width: ${pxToRem(200)};
+    height: ${pxToRem(200)};
+    background: gray;
+  `,
+  wide: css`
     width: 100%;
-    height: 250px;
-  }
-`;
+    height: 50vw;
+    background: gray;
+
+    ${media.desktop} {
+      width: 100%;
+      height: 250px;
+    }
+  `,
+};
 
 const hasSummaryTrue = css`
   display: block;
@@ -60,19 +61,20 @@ const hasSummaryFalse = css`
   display: none;
 `;
 
-const bottomLeft = css`
-  background: gray;
-  left: 0;
-`;
-const bottomCenter = css`
-  background: gray;
-  align-self: center;
-`;
-
-const topLeft = css`
-  background: gray;
-  order: -1;
-`;
+const headingPositionCss = {
+  bottomLeft: css`
+    background: gray;
+    left: 0;
+  `,
+  bottomCenter: css`
+    background: gray;
+    align-self: center;
+  `,
+  topLeft: css`
+    background: gray;
+    order: -1;
+  `,
+};
 
 export const SkeletonContainer = styled.div<SkeletonTypeProps>`
   ${(props) => props.$type === 'square' && inlineBlock}
@@ -91,7 +93,7 @@ export const SkeletonCardWrapper = styled.div<SkeletonWrapperProps>`
 `;
 
 export const SkeletonImage = styled.div<SkeletonTypeProps>`
-  ${(props) => (props.$type === 'square' ? squareType : wideType)}
+  ${({ $type }) => typeCss[$type]}
 
   overflow: hidden;
   position: relative;
@@ -101,12 +103,7 @@ export const SkeletonImage = styled.div<SkeletonTypeProps>`
 `;
 
 export const SkeletonTitle = styled.div<SkeletonTitleProps>`
-  ${(props) =>
-    props.$headingPosition === 'topLeft'
-      ? topLeft
-      : props.$headingPosition === 'bottomCenter'
-      ? bottomCenter
-      : bottomLeft}
+  ${({ $headingPosition }) => headingPositionCss[$headingPosition]}
 
   margin: ${pxToRem(16)} 0 !important;
   width: 70%;
@@ -122,5 +119,5 @@ export const SkeletonTitle = styled.div<SkeletonTitleProps>`
 `;
 
 export const SkeletonSummary = styled.div<SkeletonSummaryProps>`
-  ${(props) => (props.$hasSummary ? hasSummaryTrue : hasSummaryFalse)}
+  ${({ $hasSummary }) => ($hasSummary ? hasSummaryTrue : hasSummaryFalse)}
 `;

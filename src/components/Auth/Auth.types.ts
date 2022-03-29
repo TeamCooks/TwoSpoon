@@ -16,8 +16,14 @@ export interface FormProps {
   initialPasswordConfirm?: string;
   initialUsername?: string;
   currentForm: 'signin' | 'signup';
+  onSubmit: (values: {}) => void;
 }
 
-export interface StyleInputProps {
+export interface StyledInputProps {
   $warning: boolean;
+}
+
+
+export interface AuthContainerProps {
+  onClose: () => void;
 }

@@ -3,12 +3,12 @@ import { pxToRem } from 'utils';
 
 export const StyledPaginationControl = styled.div`
   display: flex;
-  justify-contents: center;
+  justify-content: center;
   align-items: center;
   gap: ${pxToRem(20)};
   ul {
     display: flex;
-    justify-contents: center;
+    justify-content: center;
     align-items: center;
     gap: ${pxToRem(10)};
   }
