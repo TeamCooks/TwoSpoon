@@ -1,9 +1,10 @@
 import styled from '@emotion/styled';
 import { css, Theme } from '@emotion/react';
+import { pxToRem, media } from 'utils';
 
 const collapseContent = (props: { theme: Theme }) =>
   css`
-    font-size: rem(18px);
+    font-size: ${pxToRem(18)};
     color: ${props.theme.color.gray200};
     padding: 0.5rem 0;
     line-height: 1.3;
@@ -27,6 +28,7 @@ export const StyledCollapseHeading = styled.div`
 export const StyledHeading = styled.h3`
   display: inline-block;
   font-size: 1.625rem;
+  user-select: none;
 `;
 
 export const StyledIngredient = styled.li`
@@ -49,7 +51,7 @@ export const StyledRecipeInfoItem = styled.li`
   summary {
     list-style: none;
     cursor: pointer;
-    padding: rem(3px);
+    padding: ${pxToRem(3)};
   }
 
   summary::-webkit-details-marker {
@@ -67,14 +69,15 @@ export const DivCollapseContent = styled.div`
   ${collapseContent}
 `;
 
-export const UlCollapseContent = styled.div`
+export const UlCollapseContent = styled.ul`
   ${collapseContent}
 
   li {
     padding: 8px 0;
   }
 `;
-export const OlCollapseContent = styled.div`
+
+export const OlCollapseContent = styled.ol`
   ${collapseContent}
   list-style: decimal-leading-zero;
   padding-left: 1.8em;
@@ -82,4 +85,20 @@ export const OlCollapseContent = styled.div`
   li {
     padding: 8px 0;
   }
+`;
+
+export const StyledAccordion = styled.ul`
+  ${media.desktop} {
+    width: 45%;
+    height: 70vh;
+    overflow: auto;
+  }
+
+  ${media.mobile} {
+    margin-top: 20px;
+  }
+
+  display: block;
+  color: ${({ theme }) => theme.color.white};
+  margin: 0;
 `;

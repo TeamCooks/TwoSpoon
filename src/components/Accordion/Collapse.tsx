@@ -3,7 +3,7 @@ import { CollapseContent } from './CollapseContent';
 import { CollapseHeading } from './CollapseHeading';
 import { StyledRecipeInfoItem, UlCollapseContent, OlCollapseContent, DivCollapseContent } from './Accordion.styled';
 
-export const Collapse = ({ type, data }: CollapseContentProps) => {
+export const Collapse = ({ type, data }: CollapseContentProps): JSX.Element => {
   let collapseContentContainer = null;
 
   switch (type) {

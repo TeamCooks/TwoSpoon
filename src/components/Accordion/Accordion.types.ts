@@ -32,3 +32,7 @@ export interface CollapseHeadingProps {
 export type CollapseContentProps = IngredientDetail | EquipmentDetail | SummaryDetail | InstructionDetail;
 
 export type RecipeDetail = [IngredientDetail, EquipmentDetail, SummaryDetail, InstructionDetail];
+
+export interface AccordionProps {
+  recipeDetails: RecipeDetail;
+}
