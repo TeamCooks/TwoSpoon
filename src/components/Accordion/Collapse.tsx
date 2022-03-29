@@ -41,8 +41,6 @@ export const Collapse = ({ type, data }: CollapseContentProps): JSX.Element => {
           </OlCollapseContent>
         );
       break;
-    default:
-      break;
   }
 
   return (
