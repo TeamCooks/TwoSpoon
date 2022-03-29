@@ -43,7 +43,7 @@ export const StyledCloseButton = styled(IconButton)`
 `;
 
 export const StyledDim = styled.div`
-  position: absolute;
+  position: fixed;
   z-index: 100;
   top: 0;
   left: 0;
