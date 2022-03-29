@@ -24,7 +24,7 @@ export const StyledForm = styled.form`
 
 export const StyledAuthError = styled.div`
   border: 2px solid red;
-  background-color: rgba(255, 0, 0, 0.4);
+  background-color: rgba(255, 0, 0, 0.7);
   border-radius: ${pxToRem(5)};
   padding: ${pxToRem(16)} 0;
   margin: ${pxToRem(18)} auto;
