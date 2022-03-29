@@ -4,15 +4,18 @@ import { theme } from 'theme/theme';
 import { GlobalStyle } from 'styles/GlobalStyle';
 import { Layout } from '../components';
 import { StoreProvider } from 'store';
+import { ErrorBoundary } from 'components/ErrorBoundary/ErrorBoundary';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ThemeProvider theme={theme}>
       <StoreProvider>
         <GlobalStyle />
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
+        <ErrorBoundary>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </ErrorBoundary>
       </StoreProvider>
     </ThemeProvider>
   );
