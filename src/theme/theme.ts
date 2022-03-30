@@ -16,6 +16,7 @@ export const theme: Theme = {
     backgroundGray: '#fafafa',
     searchGray: '#ebebeb',
     menuBg: '#252525',
+    hoverGray: '#f1f3f4',
 
     gray100: '#d8d8d8',
     gray200: '#b0b0b0',
