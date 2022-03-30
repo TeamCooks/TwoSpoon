@@ -1,6 +1,17 @@
+import { actions } from 'store/slices/auth';
+import { Button, Heading, Dialog } from 'components';
+import { useState, Fragment } from 'react';
+import { useDispatch } from 'react-redux';
 import { FormikProps, withFormik } from 'formik';
-import { FormValues, FormProps, AuthContainerProps } from './Auth.types';
-import { StyledForm, StyledInput, StyledAuthError, StyledFieldError, StyledAuthContainer } from './Auth.styled';
+import { FormValues, FormProps, AuthContainerProps, Form } from './Auth.types';
+import {
+  StyledForm,
+  StyledInput,
+  StyledAuthError,
+  StyledFieldError,
+  StyledAuthContainer,
+  StyledToggleButton,
+} from './Auth.styled';
 import {
   AUTH_STATE,
   AUTH_FUNC,
@@ -11,11 +22,8 @@ import {
   PLACEHOLDER,
   TYPE,
   AUTH_ERROR_MSG,
+  TOGGLE_MESSAGE,
 } from './AuthServices';
-import { Button, Heading } from 'components';
-import { useState, Fragment } from 'react';
-import { useDispatch } from 'react-redux';
-import { actions } from 'store/slices/auth';
 
 const AuthForm = (props: FormProps & FormikProps<FormValues>): JSX.Element => {
   const { currentForm, values, errors, dirty, touched, isValid, handleChange, handleBlur, handleSubmit } = props;
@@ -43,7 +51,7 @@ const AuthForm = (props: FormProps & FormikProps<FormValues>): JSX.Element => {
         ),
       )}
 
-      <Button variant="filled" round={true} color="primaryGreen" type="submit" disabled={!dirty || !isValid}>
+      <Button variant="filled" color="primaryGreen" type="submit" disabled={!dirty || !isValid}>
         {HEADING[currentForm]}
       </Button>
     </StyledForm>
@@ -58,26 +66,36 @@ const Auth = withFormik<FormProps, FormValues>({
   },
 })(AuthForm);
 
-export const AuthContainer = ({ onClose }: AuthContainerProps) => {
-  const [currentForm, setCurrentForm] = useState(AUTH_STATE.signin);
+export const AuthContainer = ({ onClose, onSignIn }: AuthContainerProps) => {
+  const [currentForm, setCurrentForm] = useState<Form>(AUTH_STATE.signin);
   const [hasAuthError, setAuthError] = useState(false);
   const dispatch = useDispatch();
 
-  const handleSubmit = async (values) => {
+  const toggleCurrentForm = () => {
+    setCurrentForm(currentForm === AUTH_STATE.signin ? AUTH_STATE.signup : AUTH_STATE.signin);
+  };
+
+  const handleSubmit = async (values: FormValues) => {
     try {
       dispatch(actions.loading(true));
       const { uid: userId } = await AUTH_FUNC[currentForm](values);
       dispatch(actions.signIn(userId));
       onClose();
+      onSignIn();
     } catch (e) {
       setAuthError(true);
     }
   };
   return (
-    <StyledAuthContainer>
-      <Heading as="h1">{HEADING[currentForm]}</Heading>
-      {hasAuthError && <StyledAuthError>{AUTH_ERROR_MSG[currentForm]}</StyledAuthError>}
-      <Auth currentForm={currentForm} onSubmit={handleSubmit} />
-    </StyledAuthContainer>
+    <Dialog label={currentForm} onClose={onClose}>
+      <StyledAuthContainer>
+        <Heading as="h1">{HEADING[currentForm]}</Heading>
+        {hasAuthError && <StyledAuthError>{AUTH_ERROR_MSG[currentForm]}</StyledAuthError>}
+        <Auth key={currentForm} currentForm={currentForm} onSubmit={handleSubmit} />
+        <StyledToggleButton color="black" variant="transparent" type="button" onClick={toggleCurrentForm}>
+          {TOGGLE_MESSAGE[currentForm]}
+        </StyledToggleButton>
+      </StyledAuthContainer>
+    </Dialog>
   );
 };

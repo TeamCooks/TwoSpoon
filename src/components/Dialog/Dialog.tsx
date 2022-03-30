@@ -21,7 +21,7 @@ export function Dialog({ onClose, children, nodeId = 'dialog', label, ...restPro
     const lastTabbableElement = tabbableElements[tabbableElements.length - 1];
 
     firstTabbableElement.focus();
-    let eventType = 'keydown';
+    const eventType = 'keydown';
 
     const eventListener = (e: KeyboardEvent) => {
       const { key, shiftKey, target } = e;
@@ -69,11 +69,11 @@ export function Dialog({ onClose, children, nodeId = 'dialog', label, ...restPro
           variant="transparent"
           color="white"
           size="large"
-          onClick={onClose}
+          onClick={handleClose}
         />
       </StyledDialogContainer>
-      <StyledDim role="presentation" onClick={onClose} />
+      <StyledDim role="presentation" onClick={handleClose} />
     </>,
-    document.getElementById(nodeId),
+    document.getElementById(nodeId)!,
   );
 }
