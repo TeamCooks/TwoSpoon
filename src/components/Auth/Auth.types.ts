@@ -28,5 +28,5 @@ export interface StyledInputProps {
 
 export interface AuthContainerProps {
   onClose: () => void;
-  onToast: () => void;
+  onSignIn: () => void;
 }
