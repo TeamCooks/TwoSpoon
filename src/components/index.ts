@@ -18,3 +18,4 @@ export * from './Card/Card';
 export * from './RandomRecipe/RandomRecipe';
 export * from './HotRecipes/HotRecipes';
 export * from './Toast/Toast';
+export * from './Accordion/Accordion';
