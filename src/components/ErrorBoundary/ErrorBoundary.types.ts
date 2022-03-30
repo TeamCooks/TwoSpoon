@@ -1,6 +1,6 @@
 import React from 'react';
 
-export interface ErrorBoundaryProps extends WithRouterProps {
+export interface ErrorBoundaryProps {
   children?: React.ReactNode;
 }
 
