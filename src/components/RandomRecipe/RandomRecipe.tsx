@@ -13,25 +13,25 @@ export const RandomRecipe = (): JSX.Element => {
 
   console.log(recipe);
   console.log(error);
+  console.log(isLoading);
 
   const renderCard = () => {
     if (isLoading) {
-      return <SkeletonCard type="wide" background="white" hasSummary={true} headingPosition="bottomLeft" />;
-    } else {
-      const { id, title, summary, image } = recipe as RandomRecipeType;
-      return (
-        <Card
-          id={id}
-          type="wide"
-          background="white"
-          hasSummary={true}
-          headingPosition="bottomLeft"
-          imgSrc={image}
-          title={title}
-          summary={summary}
-        />
-      );
+      return <SkeletonCard type="wide" background="white" hasSummary headingPosition="bottomLeft" />;
     }
+    const { id, title, summary, image } = recipe as RandomRecipeType;
+    return (
+      <Card
+        id={id}
+        type="wide"
+        background="white"
+        hasSummary
+        headingPosition="bottomLeft"
+        imgSrc={image}
+        title={title}
+        summary={summary}
+      />
+    );
   };
 
   return (

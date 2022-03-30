@@ -4,10 +4,10 @@ import _ from 'lodash';
 import { RandomRecipe } from 'store/services/types/queries';
 
 export const useRandomRecipe = () => {
+  const { data, error, isLoading } = useGetRandomRecipeQuery(2);
+
   const [savedRecipe, setSavedRecipe] = useState<RandomRecipe | {}>({});
   const [recipe, setRecipe] = useState<RandomRecipe | {}>({});
-
-  const { data, error, isLoading } = useGetRandomRecipeQuery(2);
 
   useEffect(() => {
     if (data) {

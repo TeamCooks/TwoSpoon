@@ -8,9 +8,9 @@ export default {
     id: 1,
     type: 'wide',
     background: 'white',
-    hasSummary: true,
+    hasSummary: false,
     headingPosition: 'bottomLeft',
-    title: 'hi',
+    title: 'image',
   },
   parameters: {
     nextRouter: {

@@ -1,7 +1,5 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
-import { useState } from 'react';
 import { HiCursorClick } from 'react-icons/hi';
 import { excludeTags } from 'utils';
 import {
@@ -21,7 +19,6 @@ export const Card = ({
   background,
   hasSummary,
   headingPosition,
-  // image,
   imgSrc = '/images/no-image.jpg',
   title,
   summary = '',
