@@ -1,6 +1,11 @@
 import { signIn, signUp } from 'api/requestAuth';
 import * as Yup from 'yup';
 
+export const AUTH_STATE = {
+  signin: 'signin',
+  signup: 'signup',
+} as const;
+
 export const TOGGLE_MESSAGE = {
   signin: 'Not registered yet? Sign up here!',
   signup: 'Already a member? Sign in here!',

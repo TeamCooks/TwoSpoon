@@ -1,31 +1,38 @@
 import styled from '@emotion/styled';
-import { pxToRem } from 'utils';
-import { StyleInputProps } from './Auth.types';
+import { media, pxToRem } from 'utils';
+import { Button } from 'components';
+import { StyledInputProps } from './Auth.types';
 
 export const StyledAuthContainer = styled.div`
-  padding: 15vh 0 0 0;
-  > * {
-    max-width: ${pxToRem(400)};
-    display: block;
-    width: 40vw;
-    min-width: ${pxToRem(300)};
-    margin: 0 auto;
+  h1 {
+    text-align: center;
   }
 `;
 
 export const StyledForm = styled.form`
   margin: ${pxToRem(18)} auto;
-  min-width: ${pxToRem(280)};
   display: flex;
   flex-direction: column;
   gap: ${pxToRem(4)};
-  input,
-  button {
+  > * {
+    display: block;
     padding: 0 ${pxToRem(24)};
     height: ${pxToRem(36)};
     border: none;
     border-radius: ${pxToRem(5)} ${pxToRem(5)};
   }
+`;
+
+export const StyledAuthError = styled.div`
+  border: 2px solid red;
+  background-color: rgba(255, 0, 0, 0.7);
+  border-radius: ${pxToRem(5)};
+  padding: ${pxToRem(16)} 0;
+  margin: ${pxToRem(18)} auto;
+  max-width: ${pxToRem(400)};
+  ${media.mobile && 'padding: 20px;'}
+  text-align: center;
+  color: white;
 `;
 
 export const StyledFieldError = styled.div`
@@ -36,10 +43,19 @@ export const StyledFieldError = styled.div`
   padding: 0 ${pxToRem(20)};
 `;
 
-export const StyledInput = styled.input<StyleInputProps>`
+export const StyledInput = styled.input<StyledInputProps>`
   padding: 0 ${pxToRem(24)};
   height: ${pxToRem(36)};
   border: none;
   border-radius: ${pxToRem(5)} ${pxToRem(5)};
   ${({ $warning, theme }) => $warning && `box-shadow: 0 0 1px 5px ${theme.color.primaryOrange};`}
+  background-color: ${({ theme }) => theme.color.searchGray};
+`;
+
+export const StyledToggleButton = styled(Button)`
+  text-align: center;
+  width: 100%;
+  :hover {
+    text-decoration: underline;
+  }
 `;

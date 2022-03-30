@@ -1,21 +1,23 @@
-import { SearchForm, Menu, Button, Logo } from 'components';
-import { useState, useEffect, useRef } from 'react';
-// import { useAuthLoading, useAuthUser } from '../../contexts/AuthContext';
-import lodash from 'lodash';
+import { AuthContainer, Button, Logo, Menu, SearchForm, Toast } from 'components';
+import { useToast } from 'hooks';
+import _ from 'lodash';
+import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { StyledHeader, StyledDiv, StyledIconButton } from './Header.styled';
+import { useSelector } from 'react-redux';
+import { RootState } from 'store';
+import { AuthState } from 'store/slices/auth';
+import { HEADER_HEIGHT } from 'styles/GlobalStyle';
+import { StyledDiv, StyledHeader, StyledIconButton } from './Header.styled';
 
 export const Header = (): JSX.Element => {
-  // const authLoading = useAuthLoading();
-  // const authUser = useAuthUser();
-  // const [showDialog, setShowDialog] = useState(false);
-
-  const [tempAuth, setTempAuth] = useState(false);
+  const [showDialog, setShowDialog] = useState(false);
+  const { showToast: showSignInToast, displayToast: displaySignInToast } = useToast(2000);
+  const { showToast: showSignOutToast, displayToast: displaySignOutToast } = useToast(2000);
   const [hideHeader, setHideHeader] = useState(false);
   const [showScrollToTop, setShowScrollToTop] = useState(false);
   const oldScrollTop = useRef(0);
+  const { authUser, isLoading } = useSelector<RootState, AuthState>((state) => state.auth);
 
-  /*
   const handleOpenDialog = () => {
     setShowDialog(true);
   };
@@ -23,23 +25,22 @@ export const Header = (): JSX.Element => {
   const handleCloseDialog = () => {
     setShowDialog(false);
   };
-  */
 
   const handleFocus = () => {
     setHideHeader(false);
   };
 
   const handleBlur = () => {
-    setHideHeader(window.pageYOffset > 70);
+    setHideHeader(window.pageYOffset > HEADER_HEIGHT);
   };
 
-  const controlHeader = lodash.throttle(() => {
+  const controlHeader = _.throttle(() => {
     const currentScrollTop = window.pageYOffset;
-    setHideHeader(currentScrollTop > 70 && currentScrollTop > oldScrollTop.current);
+    setHideHeader(currentScrollTop > HEADER_HEIGHT && currentScrollTop > oldScrollTop.current);
     oldScrollTop.current = currentScrollTop;
   }, 300);
 
-  const controlScrollToTop = lodash.debounce(() => {
+  const controlScrollToTop = _.debounce(() => {
     const currentScrollTop = window.pageYOffset;
     setShowScrollToTop(currentScrollTop > 500);
   }, 300);
@@ -54,12 +55,12 @@ export const Header = (): JSX.Element => {
   }, []);
 
   return (
-    <StyledHeader onFocus={handleFocus} onBlur={handleBlur}>
+    <StyledHeader onFocus={handleFocus} onBlur={handleBlur} $hide={hideHeader && isLoading}>
       <StyledDiv>
         <Logo />
         <SearchForm />
-        {tempAuth ? (
-          <Menu />
+        {authUser ? (
+          <Menu onSignOut={displaySignOutToast} />
         ) : (
           <>
             <Button
@@ -68,12 +69,12 @@ export const Header = (): JSX.Element => {
               aria-haspopup="dialog"
               aria-label="Open SignIn Dialog"
               title="Open SignIn Dialog"
-              // onClick={handleOpenDialog}
+              onClick={handleOpenDialog}
               color="black"
             >
               Sign In
             </Button>
-            {/* <Auth isVisible={showDialog} onClose={handleClos /eDialog} /> */}
+            {showDialog && <AuthContainer onClose={handleCloseDialog} onSignIn={displaySignInToast} />}
           </>
         )}
         {showScrollToTop &&
@@ -96,6 +97,8 @@ export const Header = (): JSX.Element => {
             />,
             document.getElementById('__next')!,
           )}
+        {showSignInToast && <Toast message="Signed in successfully!" />}
+        {showSignOutToast && <Toast message="Signed out" />}
       </StyledDiv>
     </StyledHeader>
   );

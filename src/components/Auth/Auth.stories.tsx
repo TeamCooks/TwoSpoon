@@ -1,14 +1,12 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { Auth } from './Auth';
+import { StoreProvider } from 'store';
+import { AuthContainer } from './Auth';
 
 export default {
-  title: 'Auth',
-  component: Auth,
-  args: { currentForm: 'signin' },
-} as ComponentMeta<typeof Auth>;
+  title: 'AuthContainer',
+  component: AuthContainer,
+} as ComponentMeta<typeof AuthContainer>;
 
-const Template: ComponentStory<typeof Auth> = (args) => <Auth {...args} />;
+const Template: ComponentStory<typeof AuthContainer> = () => <AuthContainer />;
 
 export const SignInForm = Template.bind({});
-export const SignUpForm = Template.bind({});
-SignUpForm.args = { currentForm: 'signup' };

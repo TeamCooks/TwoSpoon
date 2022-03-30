@@ -216,3 +216,5 @@ firebaseConfig.ts
 .firebaserc
 firebase.json
 .firebase
+# Sentry
+.sentryclirc
