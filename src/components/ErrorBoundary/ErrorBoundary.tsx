@@ -1,12 +1,15 @@
 import React from 'react';
+import Link from 'next/link';
 import { Heading, Header, EmptyPage } from '..';
 import { ErrorBoundaryProps, ErrorBoundaryState } from './ErrorBoundary.types';
-import Link from 'next/link';
 
 export class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundaryState> {
-  public state: ErrorBoundaryState = {
-    hasError: false,
-  };
+  constructor(props: ErrorBoundaryProps) {
+    super(props);
+    this.state = {
+      hasError: false,
+    };
+  }
 
   public componentDidCatch(error: Error) {
     this.setState({
@@ -18,7 +21,8 @@ export class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoun
   }
 
   public render() {
-    if (this.state.hasError) {
+    const { hasError } = this.state;
+    if (hasError) {
       return (
         <>
           <Header />
@@ -31,6 +35,7 @@ export class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoun
         </>
       );
     }
-    return this.props.children;
+    const { children } = this.props;
+    return children;
   }
 }
