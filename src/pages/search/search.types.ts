@@ -13,6 +13,7 @@ interface SearchResult {
 }
 
 export interface SearchPageProps {
+  keyword: string;
   results: SearchResult[];
   totalResults: number;
 }
