@@ -1,17 +1,20 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export interface AuthState {
-  isLoading: boolean;
   authUser: null | string;
+  isLoading: boolean;
 }
 
 const AuthSlice = createSlice({
   name: 'Auth',
-  initialState: { isLoading: false, authUser: null },
+  initialState: { authUser: null, isLoading: false } as AuthState,
   reducers: {
-    loading: (state: AuthState, action: PayloadAction) => ({ ...state, isLoading: action.payload }),
-    signIn: (state: AuthState, action: PayloadAction) => ({ authUser: action.payload, isLoading: false }),
-    signOut: (state: AuthState) => ({ authUser: null, isLoading: false }),
+    loading: (state: AuthState, action: PayloadAction<boolean>) => ({
+      ...state,
+      isLoading: action.payload,
+    }),
+    signIn: (_, action: PayloadAction<string>) => ({ authUser: action.payload, isLoading: false }),
+    signOut: () => ({ authUser: null, isLoading: false }),
   },
 });
 
