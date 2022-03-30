@@ -1,15 +1,15 @@
-import { useState, useEffect } from 'react';
-import { StyledNav, StyledUl, StyledLi } from './Menu.styled';
+import { useState } from 'react';
 import { useRouter } from 'next/router';
-import { IconButton, Button } from 'components';
+import { actions } from 'store/slices/auth';
+import { IconButton, Button, Toast } from 'components';
 import Link from 'next/link';
 import { logOut } from 'api/requestAuth';
 import { useDispatch } from 'react-redux';
-import { actions } from 'store/slices/auth';
+import { StyledNav, StyledUl, StyledLi } from './Menu.styled';
 
-export const Menu = () => {
+export const Menu = ({ onSignOut }) => {
   const [isOpen, setIsOpen] = useState(false);
-const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const handleClick = () => {
     setIsOpen(!isOpen);
   };
@@ -23,7 +23,8 @@ const dispatch = useDispatch();
   const handleSignOut = () => {
     logOut();
     dispatch(actions.signOut());
-  }
+    onSignOut();
+  };
   const router = useRouter();
 
   /*

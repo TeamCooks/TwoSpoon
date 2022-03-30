@@ -10,6 +10,7 @@ export default function Document() {
         <div id="loading-start" aria-live="assertive"></div>
         <div id="loading-end" aria-live="assertive"></div>
         <div id="dialog"></div>
+        <div id="toast"></div>
         <NextScript />
       </body>
     </Html>

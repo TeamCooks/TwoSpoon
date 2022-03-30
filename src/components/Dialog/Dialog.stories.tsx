@@ -1,5 +1,4 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { AuthContainer } from 'components';
 import { Dialog } from './Dialog';
 
 export default {
@@ -16,11 +15,6 @@ export default {
 const Template: ComponentStory<typeof Dialog> = (args) => <Dialog {...args} />;
 
 export const DefaultDialog = Template.bind({});
-
-export const AuthDialog = Template.bind({});
-
-AuthDialog.args = { ...DefaultDialog.args, children: <AuthContainer currentForm="signup" /> };
-
 export const LongDialog = Template.bind({});
 LongDialog.args = {
   ...DefaultDialog.args,
