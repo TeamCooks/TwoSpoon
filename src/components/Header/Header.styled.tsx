@@ -1,8 +1,8 @@
 import styled from '@emotion/styled';
 import { IconButton } from 'components';
-import { StyledHeaderProps } from './Header.types';
 import { HEADER_HEIGHT } from 'styles/GlobalStyle';
 import { pxToRem } from 'utils';
+import { StyledHeaderProps } from './Header.types';
 
 export const StyledHeader = styled.header<StyledHeaderProps>`
   background-color: ${({ theme }) => theme.color.white};
