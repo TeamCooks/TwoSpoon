@@ -28,7 +28,6 @@ export const StyledCollapseHeading = styled.div`
 export const StyledHeading = styled.h3`
   display: inline-block;
   font-size: 1.625rem;
-  user-select: none;
 `;
 
 export const StyledIngredient = styled.li`
@@ -52,6 +51,7 @@ export const StyledRecipeInfoItem = styled.li`
     list-style: none;
     cursor: pointer;
     padding: ${pxToRem(3)};
+    user-select: none;
   }
 
   summary::-webkit-details-marker {
@@ -92,6 +92,7 @@ export const StyledAccordion = styled.ul`
     width: 45%;
     height: 70vh;
     overflow: auto;
+    padding: 8px;
   }
 
   ${media.mobile} {

@@ -8,9 +8,10 @@ export default {
     id: 1,
     type: 'wide',
     background: 'white',
-    hasSummary: true,
+    hasSummary: false,
     headingPosition: 'bottomLeft',
-    title: 'hi',
+    title: 'image',
+    // imgSrc: 'https://spoonacular.com/recipeImages/Chopped-Kale-Salad-with-Pomegranate---Avocado-584495.jpg',
   },
   parameters: {
     nextRouter: {

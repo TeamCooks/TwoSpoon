@@ -5,9 +5,12 @@ import { pxToRem } from 'utils';
  
 export const StyledDL = styled.dl`
   color: ${({ theme }) => theme.color.gray500};
-  font-size: ${pxToRem(24)};
+  font-size: ${pxToRem(18)};
   padding: ${pxToRem(10)} 0;
   width: 100%;
+
+  /* @media (min-width: 380ㅔ) {}
+  } */
 `;
 
 export const StyledDiv = styled.div`

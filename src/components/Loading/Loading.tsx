@@ -8,17 +8,21 @@ const loadingEndNode = $<HTMLDivElement>('#loading-end');
 
 export const Loading = ({ message, showBackground }: LoadingProps) => {
   useEffect(() => {
-    loadingStartNode.setAttribute('role', 'alert');
-    loadingStartNode.insertAdjacentHTML('beforeend', `<span class="a11yHidden">${message}</span>`);
+    if (loadingStartNode && loadingEndNode) {
+      loadingStartNode.setAttribute('role', 'alert');
+      loadingStartNode.insertAdjacentHTML('beforeend', `<span class="a11yHidden">${message}</span>`);
+    }
 
     return () => {
-      loadingStartNode.removeAttribute('role');
-      loadingStartNode.innerHTML = '';
+      if (loadingStartNode && loadingEndNode) {
+        loadingStartNode.removeAttribute('role');
+        loadingStartNode.innerHTML = '';
 
-      loadingEndNode.insertAdjacentHTML('beforeend', `<span class="a11yHidden">Finished Loading.</span>`);
-      setTimeout(() => {
-        loadingEndNode.innerHTML = '';
-      }, 800);
+        loadingEndNode.insertAdjacentHTML('beforeend', `<span class="a11yHidden">Finished Loading.</span>`);
+        setTimeout(() => {
+          loadingEndNode.innerHTML = '';
+        }, 800);
+      }
     };
   }, [message]);
 

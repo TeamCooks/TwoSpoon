@@ -1,14 +1,14 @@
 import { AuthContainer, Button, Logo, Menu, SearchForm, Toast } from 'components';
-import { useToast } from 'hooks';
+import { useToast, useDialog } from 'hooks';
 import _ from 'lodash';
 import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from 'store';
-import { AuthState } from 'store/slices/auth';
+import { AuthState, actions } from 'store/slices/auth';
 import { HEADER_HEIGHT } from 'styles/GlobalStyle';
+import { getAuthStatus } from 'api/requestAuth';
 import { StyledDiv, StyledHeader, StyledIconButton } from './Header.styled';
-import { useDialog } from 'hooks';
 
 export const Header = (): JSX.Element => {
   const { showDialog, handleOpenDialog, handleCloseDialog } = useDialog();
@@ -18,6 +18,17 @@ export const Header = (): JSX.Element => {
   const [showScrollToTop, setShowScrollToTop] = useState(false);
   const oldScrollTop = useRef(0);
   const { authUser, isLoading } = useSelector<RootState, AuthState>((state) => state.auth);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    (async () => {
+      dispatch(actions.loading(true));
+      const user = await getAuthStatus();
+      if (user) dispatch(actions.signIn(user.uid));
+      else dispatch(actions.loading(false));
+    })();
+  }, []);
+
   const handleFocus = () => {
     setHideHeader(false);
   };
@@ -47,7 +58,7 @@ export const Header = (): JSX.Element => {
   }, []);
 
   return (
-    <StyledHeader onFocus={handleFocus} onBlur={handleBlur} $hide={hideHeader && isLoading}>
+    <StyledHeader onFocus={handleFocus} onBlur={handleBlur} $hide={hideHeader || isLoading}>
       <StyledDiv>
         <Logo />
         <SearchForm />

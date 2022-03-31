@@ -1,5 +1,4 @@
 import { useRandomRecipe } from 'hooks';
-import { RandomRecipe as RandomRecipeType } from 'store/services/types/queries';
 import { Heading, SkeletonCard, Card } from '..';
 import {
   RandomDiceIcon,
@@ -9,29 +8,26 @@ import {
 } from './RandomRecipe.styled';
 
 export const RandomRecipe = (): JSX.Element => {
-  const { recipe, error, isLoading, handleClick } = useRandomRecipe();
-
-  console.log(recipe);
-  console.log(error);
+  const { recipe, isLoading, handleClick } = useRandomRecipe();
 
   const renderCard = () => {
     if (isLoading) {
-      return <SkeletonCard type="wide" background="white" hasSummary={true} headingPosition="bottomLeft" />;
-    } else {
-      const { id, title, summary, image } = recipe as RandomRecipeType;
-      return (
-        <Card
-          id={id}
-          type="wide"
-          background="white"
-          hasSummary={true}
-          headingPosition="bottomLeft"
-          imgSrc={image}
-          title={title}
-          summary={summary}
-        />
-      );
+      return <SkeletonCard type="wide" background="white" hasSummary headingPosition="bottomLeft" />;
     }
+    const { id, title, summary, image } = recipe;
+
+    return (
+      <Card
+        id={id}
+        type="wide"
+        background="white"
+        hasSummary
+        headingPosition="bottomLeft"
+        imgSrc={image}
+        title={title}
+        summary={summary}
+      />
+    );
   };
 
   return (
