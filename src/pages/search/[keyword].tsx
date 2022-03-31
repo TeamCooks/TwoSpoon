@@ -1,16 +1,17 @@
-import { Loading, Card, Pagination } from 'components';
+import { Loading, Pagination } from 'components';
 import { NextPage } from 'next';
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
 import { useSearchRecipeQuery } from 'store/services';
+import { SearchRecipeItem } from 'store/services/types/queries';
 import { ContextProp, SearchPageProps } from './search.types';
 
 const RESULTS_PER_PAGE = 12;
 
 const Search: NextPage<SearchPageProps> = ({ keyword, results, totalResults }) => {
   const [currentPage, setCurrentPage] = useState(1);
-  const [currentResults, setCurrentResults] = useState([]);
-  const { data, error, isLoading } = useSearchRecipeQuery({
+  const [currentResults, setCurrentResults] = useState<SearchRecipeItem[]>([]);
+  const { data, isFetching } = useSearchRecipeQuery({
     keyword,
     number: RESULTS_PER_PAGE,
     offset: (currentPage - 1) * RESULTS_PER_PAGE,
@@ -18,36 +19,24 @@ const Search: NextPage<SearchPageProps> = ({ keyword, results, totalResults }) =
 
   useEffect(() => {
     if (currentPage !== 1 && data) setCurrentResults(data.results);
-  }, [currentPage]);
+  }, [data]);
 
   const handleClick = (page: number) => {
     setCurrentPage(page);
   };
-
   return (
     <div>
       <Head>
         <title>{`Searched: ${keyword}`}</title>
       </Head>
-      {currentPage !== 1 && isLoading ? (
-        <Loading message={`Loading ${currentPage} page of search results for ${keyword}`} showBackground={false} />
-      ) : (
-        <ul>
-          {(currentPage === 1 ? results : currentResults).map(({ id, title, image }) => (
-            <li key={id}>
-              <Card
-                id={id}
-                type="smallSquare"
-                background="none"
-                hasSummary={false}
-                headingPosition="bottomCenter"
-                imgSrc={`https://spoonacular.com/recipeImages/${image}`}
-                title={title}
-              />
-            </li>
-          ))}
-        </ul>
+      {currentPage !== 1 && isFetching && (
+        <Loading message={`Loading ${currentPage} page of search results for ${keyword}`} showBackground />
       )}
+      <ul>
+        {(currentPage === 1 ? results : currentResults).map(({ id, title, image }) => (
+          <li key={id}>{title}</li>
+        ))}
+      </ul>
       <Pagination
         currentPage={currentPage}
         limit={RESULTS_PER_PAGE}

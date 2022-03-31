@@ -9,7 +9,7 @@ export interface RandomRecipeQuery {
   recipes: RandomRecipe[];
 }
 
-interface SearchRecipeItem {
+export interface SearchRecipeItem {
   id: number;
   title: string;
   readyInMinutes: number;
