@@ -1,14 +1,17 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import { HotRecipes, RandomRecipe } from 'components';
+import { HotRecipes, Meta, RandomRecipe } from 'components';
 import { media } from 'utils';
 import { css } from '@emotion/react';
 
 const Home: NextPage = () => {
+  const metaData = {
+    title: 'Home',
+  };
   return (
     <>
       <Head>
-        <title>Home - HanSpoon</title>
+        <Meta data={metaData} />
       </Head>
       <div
         css={css`
