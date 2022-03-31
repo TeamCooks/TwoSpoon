@@ -1,30 +1,48 @@
-import { useRouter } from 'next/router';
+import { Loading, Pagination } from 'components';
 import { NextPage } from 'next';
+import Head from 'next/head';
+import { useEffect, useState } from 'react';
 import { useSearchRecipeQuery } from 'store/services';
-import { useState } from 'react';
+import { SearchRecipeItem } from 'store/services/types/queries';
 import { ContextProp, SearchPageProps } from './search.types';
+
 const RESULTS_PER_PAGE = 12;
 
-const Search: NextPage = ({ results, totalResults }: SearchPageProps) => {
+const Search: NextPage<SearchPageProps> = ({ keyword, results, totalResults }) => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const [currentResults, setCurrentResults] = useState<SearchRecipeItem[]>([]);
+  const { data, isFetching } = useSearchRecipeQuery({
+    keyword,
+    number: RESULTS_PER_PAGE,
+    offset: (currentPage - 1) * RESULTS_PER_PAGE,
+  });
 
-  // const {
-  //   query: { keyword },
-  // } = useRouter();
-  // const [currentIndex, setCurrentIndex] = useState(0);
-  // const { data, error, isLoading } = useSearchRecipeQuery({
-  //   keyword,
-  //   number: RESULTS_PER_PAGE,
-  //   offset: (currentIndex - 1) * RESULTS_PER_PAGE,
-  // });
-  // console.log(data);
+  useEffect(() => {
+    if (currentPage !== 1 && data) setCurrentResults(data.results);
+  }, [data]);
+
+  const handleClick = (page: number) => {
+    setCurrentPage(page);
+  };
   return (
     <div>
-      <h1>{totalResults}</h1>
+      <Head>
+        <title>{`Searched: ${keyword}`}</title>
+      </Head>
+      {currentPage !== 1 && isFetching && (
+        <Loading message={`Loading ${currentPage} page of search results for ${keyword}`} showBackground />
+      )}
       <ul>
-        {results.map(({ id, title }) => (
+        {(currentPage === 1 ? results : currentResults).map(({ id, title, image }) => (
           <li key={id}>{title}</li>
         ))}
       </ul>
+      <Pagination
+        currentPage={currentPage}
+        limit={RESULTS_PER_PAGE}
+        totalResults={totalResults}
+        onClick={handleClick}
+      />
     </div>
   );
 };
@@ -32,7 +50,7 @@ const Search: NextPage = ({ results, totalResults }: SearchPageProps) => {
 export async function getServerSideProps({ query }: ContextProp) {
   const { keyword } = query;
   const { results, totalResults } = await fetch(
-    `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com//recipes/search?query=${keyword}&number=${RESULTS_PER_PAGE}&offset=${0}`,
+    `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/search?query=${keyword}&number=${RESULTS_PER_PAGE}&offset=${0}`,
     {
       headers: {
         'content-type': 'application/json',
@@ -42,7 +60,7 @@ export async function getServerSideProps({ query }: ContextProp) {
     } as RequestInit,
   ).then((res) => res.json());
   return {
-    props: { results, totalResults },
+    props: { keyword, results, totalResults },
   };
 }
 

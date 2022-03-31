@@ -12,6 +12,9 @@ const nextConfig = {
 
     return config;
   },
+  images: {
+    domains: ['spoonacular.com'],
+  },
 };
 
 const sentryWebpackPluginOptions = {
