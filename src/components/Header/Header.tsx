@@ -8,24 +8,16 @@ import { RootState } from 'store';
 import { AuthState } from 'store/slices/auth';
 import { HEADER_HEIGHT } from 'styles/GlobalStyle';
 import { StyledDiv, StyledHeader, StyledIconButton } from './Header.styled';
+import { useDialog } from 'hooks';
 
 export const Header = (): JSX.Element => {
-  const [showDialog, setShowDialog] = useState(false);
+  const { showDialog, handleOpenDialog, handleCloseDialog } = useDialog();
   const { showToast: showSignInToast, displayToast: displaySignInToast } = useToast(2000);
   const { showToast: showSignOutToast, displayToast: displaySignOutToast } = useToast(2000);
   const [hideHeader, setHideHeader] = useState(false);
   const [showScrollToTop, setShowScrollToTop] = useState(false);
   const oldScrollTop = useRef(0);
   const { authUser, isLoading } = useSelector<RootState, AuthState>((state) => state.auth);
-
-  const handleOpenDialog = () => {
-    setShowDialog(true);
-  };
-
-  const handleCloseDialog = () => {
-    setShowDialog(false);
-  };
-
   const handleFocus = () => {
     setHideHeader(false);
   };
