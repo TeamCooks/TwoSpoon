@@ -10,7 +10,6 @@ export const HotRecipes = () => {
     if (loading) {
       return <SkeletonCard type="square" background="none" hasSummary={false} headingPosition="bottomCenter" />;
     }
-    console.log(image);
 
     return (
       <Card
