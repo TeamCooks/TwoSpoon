@@ -23,7 +23,7 @@ export const Pagination = ({ limit, currentPage, onClick: handleClick, totalResu
             <li key={index}>
               <StyledPageButton
                 type="button"
-                current={currentPage === pageStartNum + index}
+                $current={currentPage === pageStartNum + index}
                 aria-pressed={currentPage === pageStartNum + index}
                 aria-label={`Go to page ${pageStartNum + index}`}
                 onClick={() => {

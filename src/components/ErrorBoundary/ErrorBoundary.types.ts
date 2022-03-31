@@ -1,6 +1,10 @@
 import React from 'react';
+import { NextRouter } from 'next/router';
 
-export interface ErrorBoundaryProps {
+interface WithRouterProps {
+  router: NextRouter;
+}
+export interface ErrorBoundaryProps extends WithRouterProps {
   children?: React.ReactNode;
 }
 

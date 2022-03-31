@@ -20,3 +20,4 @@ export * from './HotRecipes/HotRecipes';
 export * from './Toast/Toast';
 export * from './Accordion/Accordion';
 export * from './CardList/CardList';
+export * from './Pagination/Pagination';

@@ -1,9 +1,9 @@
 import React from 'react';
 import Link from 'next/link';
+import { withRouter } from 'next/router';
 import { Heading, Header, EmptyPage } from '..';
 import { ErrorBoundaryProps, ErrorBoundaryState } from './ErrorBoundary.types';
-
-export class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundaryState> {
+class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundaryState> {
   constructor(props: ErrorBoundaryProps) {
     super(props);
     this.state = {
@@ -11,10 +11,22 @@ export class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoun
     };
   }
 
+  public componentDidUpdate(nextProps: ErrorBoundaryProps) {
+    const { pathname: nextPath } = nextProps.router;
+    const { pathname: currentPath } = this.props.router;
+
+    if (currentPath === '/' && currentPath !== nextPath) {
+      this.setState({
+        hasError: false,
+      });
+    }
+  }
+
   public componentDidCatch(error: Error) {
     this.setState({
       hasError: true,
     });
+
     console.error('====================================');
     console.error(error);
     console.error('====================================');
@@ -39,3 +51,5 @@ export class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoun
     return children;
   }
 }
+
+export const ErrorBoundaryWithRouter = withRouter(ErrorBoundary);

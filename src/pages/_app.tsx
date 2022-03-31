@@ -3,18 +3,18 @@ import { ThemeProvider } from '@emotion/react';
 import { theme } from 'theme/theme';
 import { GlobalStyle } from 'styles/GlobalStyle';
 import { StoreProvider } from 'store';
-import { Layout, ErrorBoundary } from 'components';
+import { Layout, ErrorBoundaryWithRouter } from 'components';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ThemeProvider theme={theme}>
       <StoreProvider>
         <GlobalStyle />
-        <ErrorBoundary>
+        <ErrorBoundaryWithRouter>
           <Layout>
             <Component {...pageProps} />
           </Layout>
-        </ErrorBoundary>
+        </ErrorBoundaryWithRouter>
       </StoreProvider>
     </ThemeProvider>
   );

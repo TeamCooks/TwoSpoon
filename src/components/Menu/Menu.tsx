@@ -1,13 +1,14 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 import { actions } from 'store/slices/auth';
-import { IconButton, Button, Toast } from 'components';
+import { IconButton, Button } from 'components';
 import Link from 'next/link';
 import { logOut } from 'api/requestAuth';
 import { useDispatch } from 'react-redux';
 import { StyledNav, StyledUl, StyledLi } from './Menu.styled';
+import { MenuProps } from './Menu.types';
 
-export const Menu = ({ onSignOut }) => {
+export const Menu = ({ onSignOut }: MenuProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const dispatch = useDispatch();
   const handleClick = () => {
@@ -25,22 +26,20 @@ export const Menu = ({ onSignOut }) => {
     dispatch(actions.signOut());
     onSignOut();
   };
-  const router = useRouter();
 
-  /*
-  TODO: 스토리북에서 next.js 설정 후 주석 해제
-  useEffect(() => {
-    const handleRouteChange = () => {
-      setIsOpen(false);
-    };
+  // const router = useRouter();
 
-    router.events.on('routeChangeStart', handleRouteChange);
+  // useEffect(() => {
+  //   const handleRouteChange = () => {
+  //     setIsOpen(false);
+  //   };
 
-    return () => {
-      router.events.off('routeChangeStart', handleRouteChange);
-    };
-  }, []);
-  */
+  //   router.events.on('routeChangeStart', handleRouteChange);
+
+  //   return () => {
+  //     router.events.off('routeChangeStart', handleRouteChange);
+  //   };
+  // }, []);
 
   return (
     <StyledNav onBlur={handleBlur}>
