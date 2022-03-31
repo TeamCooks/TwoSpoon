@@ -69,6 +69,7 @@ const BADGE: BadgeInfos = {
 };
 
 export const Badge = ({ iconType, size }: BadgeProps) => {
+  if (!BADGE[iconType]) return null;
   return (
     <StyledBadge $color={BADGE[iconType].color} $size={size}>
       {BADGE[iconType].icon}
