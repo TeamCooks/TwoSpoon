@@ -5,8 +5,7 @@ const locales = {
 
 export const Meta = ({ data }): JSX.Element => {
   const lang = locales[data.locale] || locales.en;
-  const { title } = data;
-  const { description } = data;
+  const { title, description } = data;
   const image = data.image !== undefined && `${data.image}`;
   const canonical = 'https://hanspoon-31cd9.web.app/';
   const type = data.type === undefined ? 'website' : data.type;
@@ -15,7 +14,6 @@ export const Meta = ({ data }): JSX.Element => {
 
   return (
     <>
-      <title>{`${title} - HanSpoon`}</title>
       <meta name="description" content={description} />
       {canonical ? <link rel="canonical" href={canonical} /> : null}
       {image ? <link href={image} /> : null}
