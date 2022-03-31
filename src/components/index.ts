@@ -23,3 +23,4 @@ export * from './Toast/Toast';
 export * from './Accordion/Accordion';
 export * from './CardList/CardList';
 export * from './Pagination/Pagination';
+export * from './Meta/Meta';
