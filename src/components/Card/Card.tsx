@@ -32,7 +32,12 @@ export const Card = ({
         <CardContainer $type={type} $background={background}>
           <figure>
             <CardFigureImgContainer $type={type}>
-              <Image src={imgSrc} title={title} layout="fill" priority />
+              <Image
+                src={'https://spoonacular.com/recipeImages/Chopped-Kale-Salad-with-Pomegranate---Avocado-584495.jpg'}
+                title={title}
+                layout="fill"
+                priority
+              />
             </CardFigureImgContainer>
             <CardFigcaption $headingPosition={headingPosition}>{title}</CardFigcaption>
           </figure>
