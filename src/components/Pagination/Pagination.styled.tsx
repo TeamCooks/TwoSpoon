@@ -6,7 +6,10 @@ export const StyledPaginationControl = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: ${pxToRem(20)};
+  gap: ${pxToRem(10)};
+  svg {
+    display: block;
+  }
   ul {
     display: flex;
     justify-content: center;
@@ -22,8 +25,4 @@ export const StyledPageButton = styled.button<PageButtonProps>`
   background-color: ${({ theme, $current }) => ($current ? theme.color.primaryOrange : theme.color.white)};
   width: ${pxToRem(32)};
   height: ${pxToRem(32)};
-  margin: ${pxToRem(6)};
-  &:hover {
-    opacity: 0.5;
-  }
 `;
