@@ -42,6 +42,6 @@ module.exports = {
     'react/function-component-definition': 'off',
     'react/require-default-props': 'off',
     'no-plusplus': 'off',
-    'no-param-reassign': 'off,',
+    'no-param-reassign': 'off',
   },
 };

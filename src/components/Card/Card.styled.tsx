@@ -96,6 +96,8 @@ export const CardContainer = styled.div<CardContainerProps>`
 `;
 
 export const CardFigureImgContainer = styled.div<CardFigureImgProps>`
+  position: relative;
+
   ${({ $type }) => typeCss[$type]}
 `;
 

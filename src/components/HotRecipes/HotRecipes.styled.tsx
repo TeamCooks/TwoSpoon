@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
-import { Heading } from '..';
 import { media, pxToRem } from 'utils';
+import { Heading } from '..';
 
 export const HotRecipesSection = styled.section`
   ${media.desktop} {
