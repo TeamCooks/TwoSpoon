@@ -39,7 +39,7 @@ export const Card = ({
                 {excludeTags(summary)
                   .split('. ')
                   .map((text, index, texts) => (
-                    <CardSummaryText key={text + index}>{text + (index < texts.length - 1 ? '.' : '')}</CardSummaryText>
+                    <CardSummaryText key={text}>{text + (index < texts.length - 1 ? '.' : '')}</CardSummaryText>
                   ))}
               </CardSummary>
               <CardButton>

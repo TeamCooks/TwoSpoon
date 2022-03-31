@@ -1,36 +1,31 @@
 import { useCallback, useEffect, useState } from 'react';
-import { useGetRandomRecipeQuery } from 'store/services';
 import _ from 'lodash';
 import { RandomRecipe } from 'store/services/types/queries';
+import { getRandomRecipe } from 'api/requestData';
 
 export const useRandomRecipe = () => {
-  const { data, error, isLoading } = useGetRandomRecipeQuery(2);
-
-  const [savedRecipe, setSavedRecipe] = useState<RandomRecipe | {}>({});
-  const [recipe, setRecipe] = useState<RandomRecipe | {}>({});
+  const [savedRecipe, setSavedRecipe] = useState<RandomRecipe>({} as RandomRecipe);
+  const [recipe, setRecipe] = useState<RandomRecipe>({} as RandomRecipe);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    if (data) {
-      const { recipes } = data;
+    (async () => {
+      const { recipes } = await getRandomRecipe(2);
+
       setRecipe(recipes[0]);
       setSavedRecipe(recipes[1]);
-    }
+
+      setIsLoading(false);
+    })();
   }, []);
 
-  const getRecipe = useCallback(() => {
+  const getRecipe = async () => {
     setRecipe(savedRecipe);
-    const { data } = useGetRandomRecipeQuery(1);
-    if (data) {
-      const { recipes } = data;
-      setSavedRecipe(recipes[0]);
-    }
-  }, []);
-
-  const handleClick = () => {
-    _.throttle(() => {
-      getRecipe();
-    }, 300);
+    const { recipes } = await getRandomRecipe();
+    setSavedRecipe(recipes[0]);
   };
 
-  return { recipe, error, isLoading, handleClick };
+  const handleClick = _.throttle(getRecipe, 300);
+
+  return { recipe, isLoading, handleClick };
 };
