@@ -16,6 +16,7 @@ declare module '@emotion/react' {
       backgroundGray: string;
       searchGray: string;
       menuBg: string;
+      hoverGray: string;
 
       gray100: string;
       gray200: string;
