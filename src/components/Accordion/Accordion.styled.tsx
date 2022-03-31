@@ -5,7 +5,7 @@ import { pxToRem, media } from 'utils';
 const collapseContent = (props: { theme: Theme }) =>
   css`
     font-size: ${pxToRem(18)};
-    color: ${props.theme.color.gray200};
+    color: ${props.theme.color.gray500};
     padding: 0.5rem 0;
     line-height: 1.3;
   `;
@@ -13,7 +13,7 @@ const collapseContent = (props: { theme: Theme }) =>
 export const StyledCollapseHeading = styled.div`
   display: flex;
   justify-content: space-between;
-  border-bottom: 1px solid ${({ theme }) => theme.color.white};
+  border-bottom: 1px solid ${({ theme }) => theme.color.gray500};
   align-content: center;
 
   svg {
@@ -100,6 +100,6 @@ export const StyledAccordion = styled.ul`
   }
 
   display: block;
-  color: ${({ theme }) => theme.color.white};
+  color: ${({ theme }) => theme.color.gray500};
   margin: 0;
 `;

@@ -1,5 +1,5 @@
 import { AuthContainer, Button, Logo, Menu, SearchForm, Toast } from 'components';
-import { useToast } from 'hooks';
+import { useToast, useDialog } from 'hooks';
 import _ from 'lodash';
 import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
@@ -11,7 +11,7 @@ import { getAuthStatus } from 'api/requestAuth';
 import { StyledDiv, StyledHeader, StyledIconButton } from './Header.styled';
 
 export const Header = (): JSX.Element => {
-  const [showDialog, setShowDialog] = useState(false);
+  const { showDialog, handleOpenDialog, handleCloseDialog } = useDialog();
   const { showToast: showSignInToast, displayToast: displaySignInToast } = useToast(2000);
   const { showToast: showSignOutToast, displayToast: displaySignOutToast } = useToast(2000);
   const [hideHeader, setHideHeader] = useState(false);
@@ -28,14 +28,6 @@ export const Header = (): JSX.Element => {
       else dispatch(actions.loading(false));
     })();
   }, []);
-
-  const handleOpenDialog = () => {
-    setShowDialog(true);
-  };
-
-  const handleCloseDialog = () => {
-    setShowDialog(false);
-  };
 
   const handleFocus = () => {
     setHideHeader(false);

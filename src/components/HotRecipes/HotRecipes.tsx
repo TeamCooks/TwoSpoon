@@ -10,6 +10,8 @@ export const HotRecipes = () => {
     if (loading) {
       return <SkeletonCard type="square" background="none" hasSummary={false} headingPosition="bottomCenter" />;
     }
+    console.log(image);
+
     return (
       <Card
         id={recipeId}
@@ -27,8 +29,8 @@ export const HotRecipes = () => {
     <HotRecipesSection>
       <HotRecipesHeader as="h2">Hot Recipes</HotRecipesHeader>
       <HotRecipesCardList>
-        {hotRecipes.map((recipe, idx) => {
-          return <HotRecipesCardItem key={idx}>{renderCards(recipe)}</HotRecipesCardItem>;
+        {hotRecipes.map((recipe) => {
+          return <HotRecipesCardItem key={recipe.title}>{renderCards(recipe)}</HotRecipesCardItem>;
         })}
       </HotRecipesCardList>
     </HotRecipesSection>

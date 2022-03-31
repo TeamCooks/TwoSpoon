@@ -2,9 +2,9 @@ import styled from '@emotion/styled';
 import { BsBookmarkHeartFill } from 'react-icons/bs';
 import { RiTimerFill } from 'react-icons/ri';
 import { pxToRem } from 'utils';
-
+ 
 export const StyledDL = styled.dl`
-  color: #cbcbcb;
+  color: ${({ theme }) => theme.color.gray500};
   font-size: ${pxToRem(18)};
   padding: ${pxToRem(10)} 0;
   width: 100%;

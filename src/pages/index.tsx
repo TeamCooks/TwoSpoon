@@ -1,8 +1,8 @@
 import type { NextPage } from 'next';
-import { useGetRandomRecipeQuery } from 'store/services';
 import Head from 'next/head';
-import Image from 'next/image';
 import { HotRecipes, RandomRecipe } from 'components';
+import { media } from 'utils';
+import { css } from '@emotion/react';
 
 const Home: NextPage = () => {
   return (
@@ -10,8 +10,17 @@ const Home: NextPage = () => {
       <Head>
         <title>Home - HanSpoon</title>
       </Head>
-      <RandomRecipe />
-      <HotRecipes />
+      <div
+        css={css`
+          ${media.desktop} {
+            display: flex;
+            flex-direction: row;
+          }
+        `}
+      >
+        <RandomRecipe />
+        <HotRecipes />
+      </div>
     </>
   );
 };
