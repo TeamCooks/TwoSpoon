@@ -29,7 +29,7 @@ export const Card = ({
         <CardContainer $type={type} $background={background}>
           <figure>
             <CardFigureImgContainer $type={type}>
-              <Image src={imgSrc} title={title} layout="fill" priority />
+              <Image src={imgSrc} title={title} layout="fill" priority objectFit="cover" />
             </CardFigureImgContainer>
             <CardFigcaption $headingPosition={headingPosition}>{title}</CardFigcaption>
           </figure>
