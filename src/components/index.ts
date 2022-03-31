@@ -18,8 +18,6 @@ export * from './Card/Card';
 export * from './RandomRecipe/RandomRecipe';
 export * from './HotRecipes/HotRecipes';
 export * from './Toast/Toast';
-<<<<<<< HEAD
-export * from './Pagination/Pagination';
-=======
 export * from './Accordion/Accordion';
->>>>>>> 36b63b6fc38e7338bbe3107bb996b543f71a0a79
+export * from './CardList/CardList';
+export * from './Pagination/Pagination';
