@@ -28,7 +28,7 @@ const Search: NextPage<SearchPageProps> = ({ keyword, results, totalResults }) =
   return (
     <div>
       <Head>
-        <title>${`Searched: ${keyword} - TwoSpoon`}</title>
+        <title>{`Searched: ${keyword} - TwoSpoon`}</title>
         <Meta
           data={{
             title: `Searched: ${keyword}`,
