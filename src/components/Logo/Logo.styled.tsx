@@ -6,6 +6,7 @@ export const StyledA = styled.a`
   display: flex;
   font-size: ${pxToRem(24)};
   align-items: center;
+  cursor: pointer;
 `;
 
 export const StyledIcon = styled(LogoIcon)`

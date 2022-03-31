@@ -43,13 +43,13 @@ export const HotRecipesCardItem = styled.li`
   text-align: center;
   width: ${pxToRem(290)};
 
-  @media (max-width: 1547px) {
-    width: 50%;
+  @media (max-width: 1100px) {
+    width: 100%;
     text-align: center;
   }
 
-  @media (max-width: 1100px) {
-    width: 100%;
+  @media (max-width: 2500px) {
+    width: 50%;
     text-align: center;
   }
 `;
