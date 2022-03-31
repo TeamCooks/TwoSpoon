@@ -29,7 +29,7 @@ const typeCss = {
       height: 50vw;
     }
     ${media.desktop} {
-      height: rem(200px);
+      height: ${pxToRem(200)};
       @media (max-width: 1547px) {
         height: 20vw;
       }
