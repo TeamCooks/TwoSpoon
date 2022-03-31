@@ -37,6 +37,9 @@ const typeCss = {
       @media (max-width: 1100px) {
         height: 25vw;
       }
+      /* @media (min-width: 1548px) {
+        height: ${pxToRem(250)};
+      } */
     }
     object-fit: cover;
   `,
