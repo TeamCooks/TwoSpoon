@@ -11,6 +11,7 @@ const Home: NextPage = () => {
   return (
     <>
       <Head>
+        <title>Home - TwoSpoon</title>
         <Meta data={metaData} />
       </Head>
       <div

@@ -15,7 +15,6 @@ const typeCss = {
   wide: css`
     width: 100%;
     height: 50vw;
-    object-fit: cover;
 
     ${media.desktop} {
       width: 100%;
@@ -41,13 +40,11 @@ const typeCss = {
         height: ${pxToRem(250)};
       } */
     }
-    object-fit: cover;
   `,
 
   smallSquare: css`
     width: 100%;
     aspect-ratio: 1 / 1;
-    object-fit: cover;
     ${media.mobile} {
       aspect-ratio: 16 / 9;
     }
