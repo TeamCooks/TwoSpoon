@@ -1,4 +1,4 @@
-import { Loading, Pagination } from 'components';
+import { Loading, Pagination, Meta, CardList } from 'components';
 import { NextPage } from 'next';
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
@@ -24,19 +24,21 @@ const Search: NextPage<SearchPageProps> = ({ keyword, results, totalResults }) =
   const handleClick = (page: number) => {
     setCurrentPage(page);
   };
+
   return (
     <div>
       <Head>
-        <title>{`Searched: ${keyword}`}</title>
+        <title>{`Searched: ${keyword} - TwoSpoon`}</title>
+        <Meta
+          data={{
+            title: `Searched: ${keyword}`,
+          }}
+        />
       </Head>
       {currentPage !== 1 && isFetching && (
         <Loading message={`Loading ${currentPage} page of search results for ${keyword}`} showBackground />
-      )}
-      <ul>
-        {(currentPage === 1 ? results : currentResults).map(({ id, title, image }) => (
-          <li key={id}>{title}</li>
-        ))}
-      </ul>
+      )}c
+      <CardList results={currentPage === 1 ? results : currentResults} />
       <Pagination
         currentPage={currentPage}
         limit={RESULTS_PER_PAGE}

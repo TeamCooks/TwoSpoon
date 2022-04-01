@@ -73,6 +73,7 @@ export const AuthContainer = ({ onClose, onSignIn }: AuthContainerProps) => {
 
   const toggleCurrentForm = () => {
     setCurrentForm(currentForm === AUTH_STATE.signin ? AUTH_STATE.signup : AUTH_STATE.signin);
+    setAuthError(false);
   };
 
   const handleSubmit = async (values: FormValues) => {
@@ -86,6 +87,7 @@ export const AuthContainer = ({ onClose, onSignIn }: AuthContainerProps) => {
       setAuthError(true);
     }
   };
+
   return (
     <Dialog label={currentForm} onClose={onClose}>
       <StyledAuthContainer>

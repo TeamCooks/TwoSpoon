@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { actions } from 'store/slices/auth';
 import { IconButton, Button } from 'components';
@@ -27,19 +27,19 @@ export const Menu = ({ onSignOut }: MenuProps) => {
     onSignOut();
   };
 
-  // const router = useRouter();
+  const router = useRouter();
 
-  // useEffect(() => {
-  //   const handleRouteChange = () => {
-  //     setIsOpen(false);
-  //   };
+  useEffect(() => {
+    const handleRouteChange = () => {
+      setIsOpen(false);
+    };
 
-  //   router.events.on('routeChangeStart', handleRouteChange);
+    router.events.on('routeChangeStart', handleRouteChange);
 
-  //   return () => {
-  //     router.events.off('routeChangeStart', handleRouteChange);
-  //   };
-  // }, []);
+    return () => {
+      router.events.off('routeChangeStart', handleRouteChange);
+    };
+  }, []);
 
   return (
     <StyledNav onBlur={handleBlur}>
