@@ -1,22 +1,20 @@
 import styled from '@emotion/styled';
 import { IconButton } from 'components';
+import { HEADER_HEIGHT } from 'styles/GlobalStyle';
+import { pxToRem } from 'utils';
+import { StyledHeaderProps } from './Header.types';
 
-const headerHeight = 70;
-
-export const StyledHeader = styled.header`
+export const StyledHeader = styled.header<StyledHeaderProps>`
   background-color: ${({ theme }) => theme.color.white};
   box-shadow: 0 4px 10px rgba(0 0 0 / 10%);
   padding: 0 10px 0 20px;
   position: fixed;
   top: 0;
+  ${({ $hide }) => $hide && `top: ${-1 * HEADER_HEIGHT}px;`}
   left: 0;
   right: 0;
   transition: top 0.2s ease-in-out;
   z-index: 10;
-
-  &.hide {
-    top: ${-1 * headerHeight}px;
-  }
 `;
 
 export const StyledDiv = styled.div`
@@ -25,7 +23,7 @@ export const StyledDiv = styled.div`
   align-items: center;
   max-width: 1500px;
   margin: 0 auto;
-  height: ${headerHeight}px;
+  height: ${pxToRem(HEADER_HEIGHT)};
 `;
 
 export const StyledIconButton = styled(IconButton)`

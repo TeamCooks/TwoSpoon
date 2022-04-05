@@ -1,6 +1,8 @@
 import { css, Global } from '@emotion/react';
 import emotionNormalize from 'emotion-normalize';
 
+export const HEADER_HEIGHT = 70;
+
 export const GlobalStyle = () => (
   <Global
     styles={css`

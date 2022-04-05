@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { RandomRecipeQuery } from './types/queries';
+import { RandomRecipeQuery, SearchQuery, SearchResults } from './types/queries';
 
 export const twoSpoonApi = createApi({
   reducerPath: 'twoSpoonApi',
@@ -16,9 +16,11 @@ export const twoSpoonApi = createApi({
   endpoints: (builder) => ({
     getRandomRecipe: builder.query<RandomRecipeQuery, number>({
       query: (number = 1) => `recipes/random?number=${number}`,
-      // transformResponse: (response: { data: RandomRecipeQuery }) => response.data,
+    }),
+    searchRecipe: builder.query<SearchResults, SearchQuery>({
+      query: ({ keyword, number, offset }) => `recipes/search?query=${keyword}&number=${number}&offset=${offset}`,
     }),
   }),
 });
 
-export const { useGetRandomRecipeQuery } = twoSpoonApi;
+export const { useGetRandomRecipeQuery, useSearchRecipeQuery } = twoSpoonApi;
