@@ -4,3 +4,7 @@ export interface PaginationProps {
   totalResults: number;
   limit: number;
 }
+
+export interface PageButtonProps {
+  $current?: boolean;
+}

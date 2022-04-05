@@ -9,7 +9,7 @@ export const CookingInfo = ({ time = 0, count = 0 }: CookingInfoProps): JSX.Elem
           <StyledTimer title="time" />
           Cooking Time
         </dt>
-        <StyledDD>{time} miuntes</StyledDD>
+        <StyledDD>{time} minutes</StyledDD>
       </StyledDiv>
       <StyledDiv>
         <dt>

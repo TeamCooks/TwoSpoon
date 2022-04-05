@@ -1,3 +1,5 @@
+export type Form = 'signin' | 'signup';
+
 export interface SignInFormValues {
   password: string;
   email: string;
@@ -16,8 +18,15 @@ export interface FormProps {
   initialPasswordConfirm?: string;
   initialUsername?: string;
   currentForm: 'signin' | 'signup';
+  onSubmit: (values: FormValues) => void;
 }
 
-export interface StyleInputProps {
+export interface StyledInputProps {
   $warning: boolean;
+}
+
+
+export interface AuthContainerProps {
+  onClose: () => void;
+  onSignIn: () => void;
 }

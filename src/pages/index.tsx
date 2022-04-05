@@ -1,15 +1,32 @@
 import type { NextPage } from 'next';
-import { useGetRandomRecipeQuery } from 'store/services';
 import Head from 'next/head';
-import Image from 'next/image';
+import { HotRecipes, Meta, RandomRecipe } from 'components';
+import { media } from 'utils';
+import { css } from '@emotion/react';
 
 const Home: NextPage = () => {
-  const { data, error, isLoading } = useGetRandomRecipeQuery(1);
-  console.log(data);
-  console.log(error);
-  console.log(isLoading);
-
-  return <div>Home</div>;
+  const metaData = {
+    title: 'Home',
+  };
+  return (
+    <>
+      <Head>
+        <title>Home - TwoSpoon</title>
+        <Meta data={metaData} />
+      </Head>
+      <div
+        css={css`
+          ${media.desktop} {
+            display: flex;
+            flex-direction: row;
+          }
+        `}
+      >
+        <RandomRecipe />
+        <HotRecipes />
+      </div>
+    </>
+  );
 };
 
 export default Home;
