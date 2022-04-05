@@ -48,7 +48,7 @@ export const HotRecipesCardItem = styled.li`
     text-align: center;
   }
 
-  @media (max-width: 2500px) {
+  @media (min-width: 2500px) {
     width: 50%;
     text-align: center;
   }

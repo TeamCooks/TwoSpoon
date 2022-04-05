@@ -35,7 +35,7 @@ export const StyledIngredient = styled.li`
   justify-content: space-between;
   align-items: center;
 
-  span:first-child {
+  span:first-of-type {
     width: 50%;
   }
 `;

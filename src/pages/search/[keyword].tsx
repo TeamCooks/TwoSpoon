@@ -37,7 +37,7 @@ const Search: NextPage<SearchPageProps> = ({ keyword, results, totalResults }) =
       </Head>
       {currentPage !== 1 && isFetching && (
         <Loading message={`Loading ${currentPage} page of search results for ${keyword}`} showBackground />
-      )}c
+      )}
       <CardList results={currentPage === 1 ? results : currentResults} />
       <Pagination
         currentPage={currentPage}
